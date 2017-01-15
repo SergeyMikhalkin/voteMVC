@@ -151,6 +151,13 @@ namespace vote.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userExist = UserManager.FindByEmail(model.Email);
+                if (userExist != null)
+                {
+                    ModelState.AddModelError("Email", "Такой Email уже зарегистрирован!");
+                    return View(model);
+                }
+
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,

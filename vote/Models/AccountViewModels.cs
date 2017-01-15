@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using vote.Attributes;
 
 namespace vote.Models
 {
@@ -54,7 +55,7 @@ namespace vote.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} должен быть не менее {2} символов", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} должен быть не менее {2} символов", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }
@@ -71,7 +72,7 @@ namespace vote.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} должен быть не менее {2} символов", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} должен быть не менее {2} символов", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }
@@ -83,16 +84,18 @@ namespace vote.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
+        [RegularExpression("[A-zА-я'-]+", ErrorMessage = "Имя должно состоять из букв")]
         [Display(Name = "Имя")]
         public string FirstName { get; set; }
 
         [Required]
+        [RegularExpression("[A-zА-я'-]+", ErrorMessage = "Фамилия должна состоять из букв")]
         [Display(Name = "Фамилия")]
         public string LastName { get; set; }
 
         [Required]
         [Display(Name = "Дата рождения")]
-        [DataType(DataType.Date)]
+        [CustomValidateDate]
         public string DateOfBorn { get; set; }
     }
 
