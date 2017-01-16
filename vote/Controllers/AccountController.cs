@@ -220,6 +220,18 @@ namespace vote.Controllers
                 var user = await UserManager.FindByNameAsync(model.Email);
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
+                    // Get site from Email
+                    // Find index if @ in Email address
+                    int indexOfAT = model.Email.LastIndexOf('@');
+
+                    // Get site length
+                    int lengthOfSite = model.Email.Length - indexOfAT - 1;
+
+                    // Get site URL
+                    string site = model.Email.Substring(indexOfAT + 1, lengthOfSite);
+
+                    // Put site address in ViewBag for view
+                    ViewBag.Site = site;
                     // Don't reveal that the user does not exist or is not confirmed
                     return View("ForgotPasswordConfirmation");
                 }
