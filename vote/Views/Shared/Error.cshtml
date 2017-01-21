@@ -1,9 +1,19 @@
 ﻿@model System.Web.Mvc.HandleErrorInfo
 
 @{
-    ViewBag.Title = "Error";
+    ViewBag.Title = "Ошибка";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-md-offset-2">
+            <img src="@Url.Content("~/Content/img/error2.png")" class="img-thumbnail center-block" width="300" height="300" />
+        </div>
+        <div class="col-md-5">
+            <blockquote>
+                <h3 class="text-danger">Упс! Что-то пошло не так =(</h3>
+                <p class="text-danger">Во время выполнения запроса произошла ошибка. </p>
+            </blockquote>
+        </div>
+    </div>
+</div>
