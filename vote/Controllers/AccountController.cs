@@ -79,6 +79,10 @@ namespace vote.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    if(UserManager.OldHashMatch(model.Email, model.Password))
+                    {
+                        await UserManager.RewriteOldPasswordAsync(model.Email, model.Password);
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -186,7 +190,7 @@ namespace vote.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
+        
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
@@ -263,7 +267,7 @@ namespace vote.Controllers
         {
             return code == null ? View("Error") : View();
         }
-
+        
         //
         // POST: /Account/ResetPassword
         [HttpPost]

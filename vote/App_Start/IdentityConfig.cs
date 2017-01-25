@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using vote.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace vote
 {
@@ -32,12 +34,130 @@ namespace vote
         }
     }
 
+    public class CustomPasswordHasher : IPasswordHasher
+    {
+        public string HashPassword(string password)
+        {
+            byte[] salt;
+            byte[] buffer2;
+            if (password == null)
+            {
+                throw new ArgumentNullException("password");
+            }
+            using (Rfc2898DeriveBytes bytes = new Rfc2898DeriveBytes(password, 0x10, 0x3e8))
+            {
+                salt = bytes.Salt;
+                buffer2 = bytes.GetBytes(0x20);
+            }
+            byte[] dst = new byte[0x31];
+            Buffer.BlockCopy(salt, 0, dst, 1, 0x10);
+            Buffer.BlockCopy(buffer2, 0, dst, 0x11, 0x20);
+            return Convert.ToBase64String(dst);
+        }
+
+        //hashedPassword - from DB, providedPassword - from form
+        public PasswordVerificationResult VerifyHashedPassword(string hashedPassword, string providedPassword)
+        {
+            byte[] buffer4;
+            if (hashedPassword == null)
+            {
+                return PasswordVerificationResult.Failed;
+            }
+            if (providedPassword == null)
+            {
+                throw new ArgumentNullException("password");
+            }
+
+            // Old hash verification
+            using (SHA1Managed sha1 = new SHA1Managed())
+            {
+                var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(providedPassword));
+                var sb = new StringBuilder(hash.Length * 2);
+
+                foreach (byte b in hash)
+                {
+                    sb.Append(b.ToString("x2"));
+                }
+
+                if (hashedPassword == sb.ToString()) return PasswordVerificationResult.Success;
+            }
+
+            // Identity hash verification
+            byte[] src = Convert.FromBase64String(hashedPassword);
+            if ((src.Length != 0x31) || (src[0] != 0))
+            {
+                return PasswordVerificationResult.Failed;
+            }
+            byte[] dst = new byte[0x10];
+            Buffer.BlockCopy(src, 1, dst, 0, 0x10);
+            byte[] buffer3 = new byte[0x20];
+            Buffer.BlockCopy(src, 0x11, buffer3, 0, 0x20);
+            using (Rfc2898DeriveBytes bytes = new Rfc2898DeriveBytes(providedPassword, dst, 0x3e8))
+            {
+                buffer4 = bytes.GetBytes(0x20);
+            }
+
+            return ByteArraysEqual(buffer3, buffer4) ? PasswordVerificationResult.Success : PasswordVerificationResult.Failed;
+        }
+
+        private bool ByteArraysEqual(byte[] buffer3, byte[] buffer4)
+        {
+            if(buffer3.Length != buffer4.Length)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < buffer3.Length; i++)
+            {
+                if (buffer3[i] != buffer4[i]) return false;
+            }
+
+            return true;
+        }
+
+    }
+
+
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
+        }
+
+        // verify the old password
+        public bool OldHashMatch(string email, string password)
+        {
+            var userPasswordHash = this.FindByName(email).PasswordHash;
+
+            using (SHA1Managed sha1 = new SHA1Managed())
+            {
+                var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(password));
+                var sb = new StringBuilder(hash.Length * 2);
+
+                foreach (byte b in hash)
+                {
+                    sb.Append(b.ToString("x2"));
+                }
+
+                if (userPasswordHash == sb.ToString()) return true;
+                else return false;
+            }
+        }
+
+
+        //rewrite password hash made by SHA1
+        public async Task RewriteOldPasswordAsync(string userName, string password)
+        {
+            // find user ID
+            var userID = this.FindByName(userName).Id;
+
+            // delete user password
+            var deleteUserResult = this.RemovePassword(userID);
+
+            // set new password
+            var setPasswordResult = await this.AddPasswordAsync(userID, password);
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
@@ -55,6 +175,8 @@ namespace vote
             {
                 RequiredLength = 8
             };
+
+            manager.PasswordHasher = new CustomPasswordHasher();
 
             // Configure user lockout defaults
             manager.UserLockoutEnabledByDefault = true;
