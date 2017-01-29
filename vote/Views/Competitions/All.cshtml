@@ -1,0 +1,18 @@
+﻿@model IEnumerable<vote.Models.Competition>
+
+@{
+    ViewBag.Title = "Соревнования";
+}
+<div class="container">
+    @foreach (vote.Models.Competition m in Model)
+    {
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <blockquote>
+                    <p>@Html.ActionLink(@m.Date + " " + @m.Name + "(" + @m.Kind + ")", @m.Id.ToString(), "Competitions", routeValues: null, htmlAttributes: null)</p>      
+                    <small>@m.Text</small>
+                </blockquote>
+            </div>
+        </div>
+    }
+</div>

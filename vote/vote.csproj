@@ -206,6 +206,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CompetitionViewModels.cs" />
+    <Compile Include="Models\Competition.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -228,6 +229,7 @@
     <Content Include="fonts\OpenSans-CondBold.ttf" />
     <Content Include="fonts\OpenSans-CondLight.ttf" />
     <Content Include="fonts\OpenSans-CondLightItalic.ttf" />
+    <None Include="Properties\PublishProfiles\mywindowshosting.com.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -273,7 +275,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Rating\FullRating.cshtml" />
-    <Content Include="Views\Competitions\AllCompetitions.cshtml" />
+    <Content Include="Views\Competitions\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

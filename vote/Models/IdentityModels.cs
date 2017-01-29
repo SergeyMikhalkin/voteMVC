@@ -38,6 +38,8 @@ namespace vote.Models
         {
         }
 
+        public DbSet<Competition> Competitions { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
