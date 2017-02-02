@@ -10,7 +10,8 @@
             <div class="col-md-8 col-md-offset-2">
                 <blockquote>
                     <p>@Html.ActionLink(@m.Date + " " + @m.Name + "(" + @m.Kind + ")", @m.Id.ToString(), "Competitions", routeValues: null, htmlAttributes: null)</p>      
-                    <small>@m.Text</small>
+                    <p>@m.Text</p>
+                    <small>Проголосовало людей: <b>@ViewBag.countOfVoters[@m.Id]</b></small>
                 </blockquote>
             </div>
         </div>

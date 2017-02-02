@@ -39,6 +39,7 @@ namespace vote.Models
         }
 
         public DbSet<Competition> Competitions { get; set; }
+        public DbSet<Vote> Votes { get; set; }
 
         public static ApplicationDbContext Create()
         {
