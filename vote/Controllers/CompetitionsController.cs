@@ -19,8 +19,10 @@ namespace vote.Controllers
             Hashtable CountOfVoters = new Hashtable();
             FillCountOfVoters(CountOfVoters);
             ViewBag.CountOfVoters = CountOfVoters;
+            ViewBag.CompetitionCount = db.Competitions.Count();
+            ViewBag.Competition = db.Competitions.ToArray();
 
-            return View(db.Competitions);
+            return View();
         }
 
         // fill hashtable 'competition' -> 'count of voters'

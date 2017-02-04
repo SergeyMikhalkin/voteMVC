@@ -69,7 +69,28 @@ blockquote {
   border-left: 5px solid #e29277;
 }
 
+.competition-col {
+    background: #fafafb;
+    border: 1px solid #E0E0E0;
+    padding: 10px;
+    margin: 5px;
+}
 
+.competition-row {
+    margin-bottom: 10px;
+}
+
+.competition-img {
+    margin: 0 auto;
+}
+
+.competition-btn {
+    margin-bottom: 3px;
+}
+
+.competition-voters {
+    margin-bottom: 3px;
+}
 /*-------------*/
 /*custom-navbar*/
 /*-------------*/
