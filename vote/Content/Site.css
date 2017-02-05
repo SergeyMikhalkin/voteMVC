@@ -91,6 +91,11 @@ blockquote {
 .competition-voters {
     margin-bottom: 3px;
 }
+
+.competition-text {
+    min-height: 45px;
+}
+
 /*-------------*/
 /*custom-navbar*/
 /*-------------*/

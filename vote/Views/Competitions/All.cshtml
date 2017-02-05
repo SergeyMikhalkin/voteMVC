@@ -21,27 +21,35 @@
                                 <div class="col-md-4">
                                     @if (ViewBag.Competition[i * 3 + j].Place == "Брест")
                                     {
-                                        <img src="@Url.Content("~/Content/img/brestLogo.png")" class="img-circle center-block" width="100" height="100" />
+                                        <img src="@Url.Content("~/Content/img/brestLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
                                     }
-                                    @if (ViewBag.Competition[i * 3 + j].Place == "Витебск" || ViewBag.Competition[i * 3 + j].Place == "Полоцк" || ViewBag.Competition[i * 3 + j].Place == "Шклов")
+                                    @if (ViewBag.Competition[i * 3 + j].Place == "Витебск")
                                     {
-                                        <img src="@Url.Content("~/Content/img/vitebskLogo.png")" class="img-circle center-block" width="100" height="100" />
+                                        <img src="@Url.Content("~/Content/img/vitebskLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
                                     }
                                     @if (ViewBag.Competition[i * 3 + j].Place == "Гомель")
                                     {
-                                        <img src="@Url.Content("~/Content/img/gomelLogo.png")" class="img-circle center-block" width="100" height="100" />
+                                        <img src="@Url.Content("~/Content/img/gomelLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
                                     }
                                     @if (ViewBag.Competition[i * 3 + j].Place == "Гродно")
                                     {
-                                        <img src="@Url.Content("~/Content/img/grodnoLogo.png")" class="img-circle center-block" width="100" height="100" />
+                                        <img src="@Url.Content("~/Content/img/grodnoLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
                                     }
                                     @if (ViewBag.Competition[i * 3 + j].Place == "Минск")
                                     {
-                                        <img src="@Url.Content("~/Content/img/minskLogo.png")" class="img-circle center-block" width="100" height="100" />
+                                        <img src="@Url.Content("~/Content/img/minskLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
                                     }
                                     @if (ViewBag.Competition[i * 3 + j].Place == "Могилев")
                                     {
-                                        <img src="@Url.Content("~/Content/img/mogilevLogo.png")" class="img-circle center-block" width="100" height="100" />
+                                        <img src="@Url.Content("~/Content/img/mogilevLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
+                                    }
+                                    @if (ViewBag.Competition[i * 3 + j].Place == "Полоцк")
+                                    {
+                                        <img src="@Url.Content("~/Content/img/polotskLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
+                                    }
+                                    @if (ViewBag.Competition[i * 3 + j].Place == "Шклов")
+                                    {
+                                        <img src="@Url.Content("~/Content/img/shklovLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
                                     }
                                 </div>
                                 <div class="col-md-8">
@@ -64,7 +72,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <h5>@ViewBag.Competition[i * 3 + j].Text</h5>
+                                    <h5 class="competition-text">@ViewBag.Competition[i * 3 + j].Text</h5>
                                 </div>
                             </div>
                             <div class="row competition-row">
@@ -106,27 +114,35 @@
                         <div class="col-md-4">
                             @if (ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Place == "Брест")
                             {
-                                <img src="@Url.Content("~/Content/img/brestLogo.png")" class="img-circle center-block" width="100" height="100" />
+                                <img src="@Url.Content("~/Content/img/brestLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
                             }
-                            @if (ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Place == "Витебск" || ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Place == "Полоцк" || ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Place == "Шклов")
+                            @if (ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Place == "Витебск")
                             {
-                                <img src="@Url.Content("~/Content/img/vitebskLogo.png")" class="img-circle center-block" width="100" height="100" />
+                                <img src="@Url.Content("~/Content/img/vitebskLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
                             }
                             @if (ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Place == "Гомель")
                             {
-                                <img src="@Url.Content("~/Content/img/gomelLogo.png")" class="img-circle center-block" width="100" height="100" />
+                                <img src="@Url.Content("~/Content/img/gomelLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
                             }
                             @if (ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Place == "Гродно")
                             {
-                                <img src="@Url.Content("~/Content/img/grodnoLogo.png")" class="img-circle center-block" width="100" height="100" />
+                                <img src="@Url.Content("~/Content/img/grodnoLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
                             }
                             @if (ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Place == "Минск")
                             {
-                                <img src="@Url.Content("~/Content/img/minskLogo.png")" class="img-circle center-block" width="100" height="100" />
+                                <img src="@Url.Content("~/Content/img/minskLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
                             }
                             @if (ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Place == "Могилев")
                             {
-                                <img src="@Url.Content("~/Content/img/mogilevLogo.png")" class="img-circle center-block" width="100" height="100" />
+                                <img src="@Url.Content("~/Content/img/mogilevLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
+                            }
+                            @if (ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Place == "Полоцк")
+                            {
+                                <img src="@Url.Content("~/Content/img/polotskLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
+                            }
+                            @if (ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Place == "Шклов")
+                            {
+                                <img src="@Url.Content("~/Content/img/shklovLogo.png")" class="img-thumbnail center-block" width="100" height="100" />
                             }
                         </div>
                         <div class="col-md-8">
