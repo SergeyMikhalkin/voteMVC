@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="col-md-5">
                                     <div class="competition-btn">
-                                        <a href="/Competition/@ViewBag.Competition[i * 3 + j].Id" class="btn btn-sm btn-danger btn-block">Проголосовать</a>
+                                        <a href="/Competitions/Vote/@ViewBag.Competition[i * 3 + j].Id" class="btn btn-sm btn-danger btn-block">Проголосовать</a>
                                     </div>
                                 </div>
                             </div>
@@ -178,7 +178,7 @@
                         </div>
                         <div class="col-md-5">
                             <div class="competition-btn">
-                                <a href="/Competition/@ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id" class="btn btn-sm btn-danger btn-block">Проголосовать</a>
+                                <a href="/Competitions/Vote/@ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id" class="btn btn-sm btn-danger btn-block">Проголосовать</a>
                             </div>
                         </div>
                     </div>
