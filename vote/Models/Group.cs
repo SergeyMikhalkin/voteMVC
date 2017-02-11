@@ -10,10 +10,12 @@ namespace vote.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<Competition> Competitions { get; set; }
+        public ICollection<Vote> Votes { get; set; }
 
         public Group()
         {
             Competitions = new List<Competition>();
+            Votes = new List<Vote>();
         }
     }
 }

@@ -14,19 +14,16 @@ namespace vote.Models
         public string Date { get; set; }
         public string Place { get; set; }
         public string Kind { get; set; }
-        public string Special { get; set; }
-        public string EliteRating { get; set; }
-        public string OldRating { get; set; }
-        public string SprintRating { get; set; }
-
         public ICollection<Comment> Comments { get; set; }
         public ICollection<Group> Groups { get; set; }
         public ICollection<Vote> Votes { get; set; }
+        public ICollection<Rating> Ratings { get; set; }
         public Competition()
         {
             Comments = new List<Comment>();
             Groups = new List<Group>();
             Votes = new List<Vote>();
+            Ratings = new List<Rating>();
         }
     }
 }

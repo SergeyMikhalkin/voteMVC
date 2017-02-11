@@ -8,7 +8,6 @@ namespace vote.Models
     public class Vote
     {
         public int Id { get; set; }
-
         public int Info { get; set; }
         public int Place { get; set; }
         public int Map { get; set; }
@@ -19,8 +18,12 @@ namespace vote.Models
         public int Finish { get; set; }
         public int Results { get; set; }
         public int Center { get; set; }
-        public int UserID { get; set; }
-        public int MapID { get; set; }
+
+        public string UserId { get; set; }
+        public ApplicationUser User { get; set; }
+        public int CompetitionID { get; set; }
+        public Competition Competition { get; set; }
         public int GroupID { get; set; }
+        public Group Group { get; set; }
     }
 }
