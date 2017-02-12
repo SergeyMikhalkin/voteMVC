@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace vote.Models
 {
@@ -21,6 +22,15 @@ namespace vote.Models
         [Required]
         [Display(Name = "Дата рождения")]
         public string DateOfBorn { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
+        public ICollection<Vote> Votes { get; set; }
+
+
+        public ApplicationUser() : base()
+        {
+            Comments = new List<Comment>();
+        }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -40,6 +50,9 @@ namespace vote.Models
 
         public DbSet<Competition> Competitions { get; set; }
         public DbSet<Vote> Votes { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
 
         public static ApplicationDbContext Create()
         {
