@@ -9,6 +9,7 @@ body {
     padding-bottom: 20px;
     /* for footer*/
     margin-bottom: 60px;
+    overflow-y:scroll;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -172,6 +173,7 @@ blockquote {
 }
 
 @media (max-width: 767px) {
+
   .navbar-custom .navbar-nav .open .dropdown-menu > .dropdown-header {
     border-color: #e2bbac;
   }
