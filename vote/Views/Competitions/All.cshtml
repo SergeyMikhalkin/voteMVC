@@ -1,7 +1,19 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity
+@{
     ViewBag.Title = "Соревнования";
 }
-
+    
+    @{
+        bool isAuth = false;
+        if (Request.IsAuthenticated)
+        {
+            isAuth = true;
+        }
+        else
+        {
+            isAuth = false;
+        }
+    }
 <div class="container">
     @if (ViewBag.CompetitionCount / 3 > 0)
     {
@@ -78,7 +90,15 @@
                             <div class="row competition-row">
                                 <div class="col-md-10 col-md-offset-1">
                                     <div class="competition-voters">
-                                        <small>Проголосовало людей: <b>@ViewBag.countOfVoters[ViewBag.Competition[i * 3 + j].Id]</b></small>
+                                        @if (ViewBag.countOfVoters[ViewBag.Competition[i * 3 + j].Id] != null)
+                                        {
+                                            <small>Проголосовало людей: <b>ViewBag.countOfVoters[ViewBag.Competition[i * 3 + j].Id]</b></small>
+                                        }
+                                        else
+                                        {
+                                            <small>Проголосовало людей: <b>0</b></small>
+                                        }
+
                                     </div>
                                 </div>
                             </div>
@@ -88,11 +108,23 @@
                                         <a href="/Result/@ViewBag.Competition[i * 3 + j].Id" class="btn btn-sm btn-default btn-block">Результаты</a>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <div class="competition-btn">
-                                        <a href="/Competitions/Vote/@ViewBag.Competition[i * 3 + j].Id" class="btn btn-sm btn-danger btn-block">Проголосовать</a>
+                                @if (isAuth == true)
+                                {
+                                    <div class="col-md-5">
+                                        <div class="competition-btn">
+                                            <a href="/Competitions/Vote/@ViewBag.Competition[i * 3 + j].Id" class="btn btn-sm btn-danger btn-block">Проголосовать</a>
+                                        </div>
                                     </div>
-                                </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-5">
+                                        <div class="competition-btn">
+                                            <a href="/Competitions/Vote/@ViewBag.Competition[i * 3 + j].Id" class="btn btn-sm btn-danger btn-block disabled">Проголосовать</a>
+                                        </div>
+                                    </div>
+                                }
+
                             </div>
                         </div>
                     </div>
@@ -166,7 +198,15 @@
                     <div class="row competition-row">
                         <div class="col-md-10 col-md-offset-1">
                             <div class="competition-voters">
-                                <small>Проголосовало людей: <b>@ViewBag.countOfVoters[ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id]</b></small>
+                                @if (ViewBag.countOfVoters[ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id] != null)
+                                {
+                                    <small>Проголосовало людей: <b>@ViewBag.countOfVoters[ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id]</b></small>
+                                }
+                                else
+                                {
+                                    <small>Проголосовало людей: <b>0</b></small>
+                                }
+
                             </div>
                         </div>
                     </div>
@@ -176,11 +216,22 @@
                                 <a href="/Result/@ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id" class="btn btn-sm btn-default btn-block">Результаты</a>
                             </div>
                         </div>
-                        <div class="col-md-5">
-                            <div class="competition-btn">
-                                <a href="/Competitions/Vote/@ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id" class="btn btn-sm btn-danger btn-block">Проголосовать</a>
+                        @if (isAuth == true)
+                        {
+                            <div class="col-md-5">
+                                <div class="competition-btn">
+                                    <a href="/Competitions/Vote/@ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id" class="btn btn-sm btn-danger btn-block">Проголосовать</a>
+                                </div>
                             </div>
-                        </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-5">
+                                <div class="competition-btn">
+                                    <a href="/Competitions/Vote/@ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id" class="btn btn-sm btn-danger btn-block disabled">Проголосовать</a>
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
