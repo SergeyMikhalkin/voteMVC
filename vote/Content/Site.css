@@ -106,6 +106,10 @@ blockquote {
 
 }
 
+.top-margin-20 {
+	margin-top: 20px;
+}
+
 .top-margin-10 {
 	margin-top: 10px;
 }
@@ -165,6 +169,10 @@ blockquote {
 .col-xs-6 > a {
     font-size: smaller;
     padding: 2px;
+}
+
+.progress {
+	margin-bottom: 10px;
 }
 
 /*------------------------*/
