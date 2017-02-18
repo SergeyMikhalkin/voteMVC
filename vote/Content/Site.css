@@ -143,6 +143,10 @@ blockquote {
 	width: 22px;
 }
 
+.grade:hover {
+    background: rgb(204, 224, 237);
+}
+
 .grade-padding-3 {
 	padding: 3px;
 }
@@ -270,6 +274,9 @@ blockquote {
   .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #e2bbac;
     background-color:  rgba(226,146,119, 0.7);
+  }
+  .error-blockquote {
+      margin-top: 10px;
   }
 }
 
