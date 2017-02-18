@@ -108,7 +108,7 @@
                                         <a href="/Result/@ViewBag.Competition[i * 3 + j].Id" class="btn btn-sm btn-default btn-block">Результаты</a>
                                     </div>
                                 </div>
-                                @if (isAuth == true)
+                                @if ((isAuth == true) && (ViewBag.VotedCompetitions[ViewBag.Competition[i * 3 + j].Id] != true))
                                 {
                                     <div class="col-md-5">
                                         <div class="competition-btn">
@@ -216,7 +216,7 @@
                                 <a href="/Result/@ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id" class="btn btn-sm btn-default btn-block">Результаты</a>
                             </div>
                         </div>
-                        @if (isAuth == true)
+                        @if ((isAuth == true) && (ViewBag.VotedCompetitions[ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id] != true))
                         {
                             <div class="col-md-5">
                                 <div class="competition-btn">
