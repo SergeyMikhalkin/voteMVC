@@ -105,22 +105,22 @@
                             <div class="row competition-row">
                                 <div class="col-md-5 col-md-offset-1">
                                     <div class="competition-btn">
-                                        <a href="/Result/@ViewBag.Competition[i * 3 + j].Id" class="btn btn-sm btn-default btn-block">Результаты</a>
+                                        @Html.RouteLink("Результаты", new { controller = "Results", action = "Show", id = ViewBag.Competition[i * 3 + j].Id }, new { @class = "btn btn-sm btn-default btn-block" })
                                     </div>
                                 </div>
                                 @if ((isAuth == true) && (ViewBag.VotedCompetitions[ViewBag.Competition[i * 3 + j].Id] != true))
                                 {
                                     <div class="col-md-5">
                                         <div class="competition-btn"> 
-                                            @Html.ActionLink("Проголосовать", "Vote", "Competitions", new { competitionId = ViewBag.Competition[i * 3 + j].Id }, new { @class = "btn btn-sm btn-danger btn-block" })
-1                                        </div>
+                                            @Html.RouteLink("Проголосовать", new { controller = "Competitions", action = "Vote", id = ViewBag.Competition[i * 3 + j].Id }, new { @class = "btn btn-sm btn-danger btn-block" })
+                                      </div>
                                     </div>
                                 }
                                 else
                                 {
                                     <div class="col-md-5">
                                         <div class="competition-btn">
-                                            @Html.ActionLink("Проголосовать", "Vote", "Competitions", new { competitionId = ViewBag.Competition[i * 3 + j].Id }, new { @class = "btn btn-sm btn-danger btn-block disabled" })
+                                            @Html.RouteLink("Проголосовать", new { controller = "Competitions", action = "Vote", id = ViewBag.Competition[i * 3 + j].Id }, new { @class = "btn btn-sm btn-danger btn-block disabled" })
                                         </div>
                                     </div>
                                 }
@@ -213,14 +213,14 @@
                     <div class="row competition-row">
                         <div class="col-md-5 col-md-offset-1">
                             <div class="competition-btn">
-                                <a href="/Result/@ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id" class="btn btn-sm btn-default btn-block">Результаты</a>
+                                @Html.RouteLink("Результаты", new { controller = "Results", action = "Show", id = ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id }, new { @class = "btn btn-sm btn-default btn-block" })
                             </div>
                         </div>
                         @if ((isAuth == true) && (ViewBag.VotedCompetitions[ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id] != true))
                         {
                             <div class="col-md-5">
                                 <div class="competition-btn">                            
-                                    @Html.ActionLink("Проголосовать", "Vote", "Competitions", new { competitionId = ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id }, new { @class = "btn btn-sm btn-danger btn-block" })
+                                    @Html.RouteLink("Проголосовать", new { controller = "Competitions", action = "Vote", id = ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id }, new { @class = "btn btn-sm btn-danger btn-block" })
                                 </div>
                             </div>
                         }
@@ -228,7 +228,7 @@
                         {
                             <div class="col-md-5">
                                 <div class="competition-btn">                 
-                                    @Html.ActionLink("Проголосовать", "Vote", "Competitions", new { competitionId = ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id }, new { @class = "btn btn-sm btn-danger btn-block disabled" })
+                                    @Html.RouteLink("Проголосовать", new { controller = "Competitions", action = "Vote", id = ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id }, new { @class = "btn btn-sm btn-danger btn-block disabled" })
                                 </div>
                             </div>
                         }
