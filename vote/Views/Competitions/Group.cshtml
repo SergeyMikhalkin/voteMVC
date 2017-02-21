@@ -1,0 +1,33 @@
+﻿@model int
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-offset-3 col-md-6">
+            <div class="vote-col">
+                <div class="row top-margin-10">
+                    <div class="col-md-12 text-center">
+                        <h4>Выберите группу в которой бы бежали:</h4>
+                    </div>
+                </div>
+                <div class="row top-margin-10 bottom-padding-10">
+                    <div class="col-md-12">
+                        @using (Html.BeginForm("Info", "Competitions", null, FormMethod.Post, new { @class = "", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("CompetitionID", Model)
+                            <fieldset>
+                                    @Html.DropDownList("groupId", @ViewBag.Groups as SelectList, "Выбирете группу", new { @onchange = "onChange(this.form, this.value)", @class = "form-control" })
+                            </fieldset>
+                        }             
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>	
+<script>
+    function onChange(form, value) {
+        if (value != 'Выбирете группу') {
+            form.submit();
+        }       
+    }
+</script>

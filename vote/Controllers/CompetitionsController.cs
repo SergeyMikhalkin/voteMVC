@@ -68,5 +68,46 @@ namespace vote.Controllers
                 countOfVoters.Add(group.Key, group.Count());
             }
         }
+
+        [Authorize]
+        public ActionResult Vote(int? Id)
+        {
+            // get User ID
+            string userId = getUserId(User.Identity.Name);
+
+            if (userId == "Error") return View("Error");
+
+            // list of groups for competition
+            var groupsForCompetition = db.Groups.Where(x => x.Competitions.Any(c => c.Id == Id)).Select(r => r);
+            ViewBag.Groups = new SelectList(groupsForCompetition, "Id", "Name");
+
+            // User already vote check
+            bool userVotedFor = db.Votes.Any(x => x.UserId == userId && x.CompetitionID == Id);
+            return userVotedFor ? View("All") : View("Group", Id);
+        }
+
+        // find user ID by name
+        private string getUserId(string userName)
+        {
+
+            string userId = string.Empty;
+            if (userName != string.Empty)
+            {
+                userId = string.Empty;
+                try
+                {
+                    userId = db.Users.Single(x => x.UserName == userName).Id;
+                    return userId;
+                }
+                catch (Exception)
+                {
+                    return "Error";
+                }
+            }
+            else
+            {
+                return "Error";
+            }
+        }
     }
 }
