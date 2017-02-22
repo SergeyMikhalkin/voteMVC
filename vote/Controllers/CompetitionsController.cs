@@ -70,7 +70,7 @@ namespace vote.Controllers
         }
 
         [Authorize]
-        public ActionResult Vote(int? Id)
+        public ActionResult Vote(int Id)
         {
             // get User ID
             string userId = getUserId(User.Identity.Name);
@@ -83,7 +83,19 @@ namespace vote.Controllers
 
             // User already vote check
             bool userVotedFor = db.Votes.Any(x => x.UserId == userId && x.CompetitionID == Id);
-            return userVotedFor ? View("All") : View("Group", Id);
+
+            // model for save answers
+            VoteViewModel vote = new VoteViewModel();
+            try
+            {
+                vote.UserID = db.Users.Single(x => x.Id == userId).Id;
+            }
+            catch (Exception)
+            {
+                return View("Error");
+            }
+
+            return userVotedFor ? View("All") : View("Group", vote);
         }
 
         // find user ID by name
@@ -108,6 +120,24 @@ namespace vote.Controllers
             {
                 return "Error";
             }
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Info(int groupId, VoteViewModel VoteViewModel)
+        {
+            if (VoteViewModel == null) return View("Error");
+            try
+            {
+                VoteViewModel.GroupID = groupId;
+            }
+            catch (Exception)
+            {
+
+                return View("Error");
+            }
+
+            return View("Info", VoteViewModel);
         }
     }
 }

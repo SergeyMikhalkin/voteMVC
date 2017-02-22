@@ -1,4 +1,5 @@
-﻿@model int
+﻿@model vote.Models.VoteViewModel
+
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-offset-3 col-md-6">
@@ -13,11 +14,24 @@
                         @using (Html.BeginForm("Info", "Competitions", null, FormMethod.Post, new { @class = "", role = "form" }))
                         {
                             @Html.AntiForgeryToken()
-                            @Html.Hidden("CompetitionID", Model)
+                            @Html.HiddenFor(m => m.Id)
+                            @Html.HiddenFor(m => m.Info)
+                            @Html.HiddenFor(m => m.Place)
+                            @Html.HiddenFor(m => m.Map)
+                            @Html.HiddenFor(m => m.Print)
+                            @Html.HiddenFor(m => m.Sealed)
+                            @Html.HiddenFor(m => m.Distance)
+                            @Html.HiddenFor(m => m.Start)
+                            @Html.HiddenFor(m => m.Finish)
+                            @Html.HiddenFor(m => m.Center)
+                            @Html.HiddenFor(m => m.Results)
+                            @Html.HiddenFor(m => m.UserID)
+                            @Html.HiddenFor(m => m.CompetitionID)
+                            @Html.HiddenFor(m => m.GroupID)
                             <fieldset>
                                     @Html.DropDownList("groupId", @ViewBag.Groups as SelectList, "Выбирете группу", new { @onchange = "onChange(this.form, this.value)", @class = "form-control" })
                             </fieldset>
-                        }             
+                        }       
                     </div>
                 </div>
             </div>
