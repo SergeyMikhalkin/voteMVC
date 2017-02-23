@@ -29,7 +29,7 @@
                             @Html.HiddenFor(m => m.CompetitionID)
                             @Html.HiddenFor(m => m.GroupID)
                             <fieldset>
-                                    @Html.DropDownList("groupId", @ViewBag.Groups as SelectList, "Выбирете группу", new { @onchange = "onChange(this.form, this.value)", @class = "form-control" })
+                                    @Html.DropDownList("groupIdFromForm", @ViewBag.Groups as SelectList, "Выбирете группу", new { @onchange = "onChange(this.form, this.value)", @class = "form-control" })
                             </fieldset>
                         }       
                     </div>
@@ -41,6 +41,8 @@
 <script>
     function onChange(form, value) {
         if (value != 'Выбирете группу') {
+            alert(value);
+            //form.parameters["groupId"] = value;
             form.submit();
         }       
     }

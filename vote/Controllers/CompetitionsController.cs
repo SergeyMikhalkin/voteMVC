@@ -122,14 +122,14 @@ namespace vote.Controllers
             }
         }
 
-        [Authorize]
         [HttpPost]
-        public ActionResult Info(int groupId, VoteViewModel VoteViewModel)
+        public ActionResult Info(int groupIdFromForm, VoteViewModel VoteViewModel)
         {
+
             if (VoteViewModel == null) return View("Error");
             try
             {
-                VoteViewModel.GroupID = groupId;
+                VoteViewModel.GroupID = groupIdFromForm;
             }
             catch (Exception)
             {
