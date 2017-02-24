@@ -1,7 +1,24 @@
-﻿<div class="container">
+﻿@model vote.Models.VoteViewModel
+
+<div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-offset-3 col-md-6">
             <div class="vote-col">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Id)
+                @Html.HiddenFor(m => m.Info)
+                @Html.HiddenFor(m => m.Place)
+                @Html.HiddenFor(m => m.Map)
+                @Html.HiddenFor(m => m.Print)
+                @Html.HiddenFor(m => m.Sealed)
+                @Html.HiddenFor(m => m.Distance)
+                @Html.HiddenFor(m => m.Start)
+                @Html.HiddenFor(m => m.Finish)
+                @Html.HiddenFor(m => m.Center)
+                @Html.HiddenFor(m => m.Results)
+                @Html.HiddenFor(m => m.UserID)
+                @Html.HiddenFor(m => m.CompetitionID)
+                @Html.HiddenFor(m => m.GroupID)
                 <div class="row top-margin-10">
                     <div class="col-md-12">
                         <img src="~/Content/img/LogosForVoting/info.png" class="img-thumbnail center-block" />
@@ -41,7 +58,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <textarea class="form-control" style="resize:none;" rows="2"></textarea>
+                        @Html.TextArea("comment", "", new { @class = "form-control", row = "2" })
                     </div>
                 </div>
                 <div class="row top-margin-7">
@@ -54,9 +71,9 @@
                         <small>Плохо</small>
                     </div>
                     <div class="col-xs-6 col-md-6 col-lg-6 text-center">
-                        <div class="grade text-center"><a href="@Url.Action("Place", "Competitions")">1</a></div>
-                        <div class="grade text-center"><a href="2">2</a></div>
-                        <div class="grade text-center"><a href="3">3</a></div>
+                        <div class="grade text-center"><a href="/Competitions/Place?infoGrade=1" name="infoGrade" id="infoGrade">1</a></div>
+                        <div class="grade text-center"><a href="/Competitions/Place?infoGrade=2" name="infoGrade" id="infoGrade">2</a></div>
+                        <div class="grade text-center"><a href="/Competitions/Place?infoGrade=3" name="infoGrade" id="infoGrade">3</a></div>
                     </div>
                     <div class="col-xs-3 col-md-3 col-lg-3 text-left grade-border-left grade-padding-3">
                         <small>Хорошо</small>

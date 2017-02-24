@@ -127,17 +127,21 @@ namespace vote.Controllers
         {
 
             if (VoteViewModel == null) return View("Error");
-            try
-            {
-                VoteViewModel.GroupID = groupIdFromForm;
-            }
-            catch (Exception)
-            {
 
-                return View("Error");
-            }
+            VoteViewModel.GroupID = groupIdFromForm;
 
             return View("Info", VoteViewModel);
         }
+
+        public ActionResult Place(int infoGrade, VoteViewModel VoteViewModel)
+        {
+            if (VoteViewModel == null) return View("Error");
+
+            VoteViewModel.Info = infoGrade;
+
+            return View("Place", VoteViewModel);
+        }
+
+
     }
 }
