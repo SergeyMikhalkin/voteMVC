@@ -86,6 +86,10 @@ namespace vote.Controllers
 
             // model for save answers
             VoteViewModel vote = new VoteViewModel();
+
+            // fill competition id
+            vote.CompetitionID = Id;
+
             try
             {
                 vote.UserID = db.Users.Single(x => x.Id == userId).Id;
