@@ -123,7 +123,7 @@ namespace vote.Controllers
         }
 
         [HttpPost]
-        public ActionResult Info(int groupIdFromForm, VoteViewModel VoteViewModel)
+        public ActionResult Group(int groupIdFromForm, VoteViewModel VoteViewModel)
         {
 
             if (VoteViewModel == null) return View("Error");
