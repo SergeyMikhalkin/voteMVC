@@ -158,11 +158,12 @@ blockquote {
 	padding-right: 0px;
 }
 
-.grade > a {
+.grade > div {
 	color: #39739d;
+    margin: 0;
 }
-.grade > a:hover {
-	text-decoration:none;
+.grade > div:hover {
+    cursor:pointer;	
 }
 
 .col-xs-6 {
@@ -170,13 +171,17 @@ blockquote {
 	padding-right: 4px;
 }
 
-.col-xs-6 > a {
+.col-xs-6 > div {
     font-size: smaller;
     padding: 2px;
 }
 
 .progress {
 	margin-bottom: 10px;
+}
+
+textarea {
+    resize: none;
 }
 
 /*------------------------*/
