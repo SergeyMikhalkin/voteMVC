@@ -147,5 +147,73 @@ namespace vote.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult Info(int infoGrade, string commentAboutInfo, VoteViewModel voteViewModel)
+        {
+            if (voteViewModel == null) return View("Error");
+
+            if (commentAboutInfo != string.Empty)
+            {
+
+                // create comment
+                Comment newComment = new Comment() { Text = commentAboutInfo, FieldName = "Info" };
+
+                // get user
+                ApplicationUser user = new ApplicationUser();
+                if (getUserByName(User.Identity.Name, ref user) == "Error")
+                {
+                    return View("Error");
+                }
+
+                Competition competition = new Competition();
+                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
+                {
+                    return View("Error");
+                }
+
+                // assign user and competition to comment
+                newComment.User = user;
+                newComment.Competition = competition;
+                newComment.UserId = user.Id;
+                newComment.CompetitionId = competition.Id;
+
+                // create new comment in db
+                db.Comments.Add(newComment);
+                db.SaveChanges();
+            }
+
+            voteViewModel.Info = infoGrade;
+
+            return View("Place", voteViewModel);
+        }
+
+        private string getCompetitionById(int competitionId, ref Competition competition)
+        {
+            try
+            {
+                competition = db.Competitions.Single(c => c.Id == competitionId);
+            }
+            catch (Exception)
+            {
+                return "Error";
+            }
+
+            return "Ok";
+        }
+
+        private string getUserByName(string userName, ref ApplicationUser user)
+        {
+            try
+            {
+                user = db.Users.Single(u => u.UserName == userName);
+            }
+            catch (Exception)
+            {
+                return "Error";
+            }
+
+            return "Ok";
+        }
+
     }
 }

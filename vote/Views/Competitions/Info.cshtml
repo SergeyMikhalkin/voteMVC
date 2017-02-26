@@ -4,97 +4,107 @@
     <div class="row">
         <div class="col-xs-12 col-md-offset-3 col-md-6">
             <div class="vote-col">
-                @Html.AntiForgeryToken()
-                @Html.HiddenFor(m => m.Id)
-                @Html.HiddenFor(m => m.Info)
-                @Html.HiddenFor(m => m.Place)
-                @Html.HiddenFor(m => m.Map)
-                @Html.HiddenFor(m => m.Print)
-                @Html.HiddenFor(m => m.Sealed)
-                @Html.HiddenFor(m => m.Distance)
-                @Html.HiddenFor(m => m.Start)
-                @Html.HiddenFor(m => m.Finish)
-                @Html.HiddenFor(m => m.Center)
-                @Html.HiddenFor(m => m.Results)
-                @Html.HiddenFor(m => m.UserID)
-                @Html.HiddenFor(m => m.CompetitionID)
-                @Html.HiddenFor(m => m.GroupID)
-                <div class="row top-margin-10">
-                    <div class="col-md-12">
-                        <img src="~/Content/img/LogosForVoting/info.png" class="img-thumbnail center-block" />
+                @using (Html.BeginForm("Info", "Competitions", null, FormMethod.Post, new { @class = "", role = "form", name="form", id="form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.Id)
+                    @Html.HiddenFor(m => m.Info)
+                    @Html.HiddenFor(m => m.Place)
+                    @Html.HiddenFor(m => m.Map)
+                    @Html.HiddenFor(m => m.Print)
+                    @Html.HiddenFor(m => m.Sealed)
+                    @Html.HiddenFor(m => m.Distance)
+                    @Html.HiddenFor(m => m.Start)
+                    @Html.HiddenFor(m => m.Finish)
+                    @Html.HiddenFor(m => m.Center)
+                    @Html.HiddenFor(m => m.Results)
+                    @Html.HiddenFor(m => m.UserID)
+                    @Html.HiddenFor(m => m.CompetitionID)
+                    @Html.HiddenFor(m => m.GroupID)
+                    <div class="row top-margin-10">
+                        <div class="col-md-12">
+                            <img src="~/Content/img/LogosForVoting/info.png" class="img-thumbnail center-block" />
+                        </div>
                     </div>
-                </div>
-                <div class="row top-margin-10">
-                    <div class="col-md-12 text-center">
-                        <h4>Информация о соревнованиях</h4>
+                    <div class="row top-margin-10">
+                        <div class="col-md-12 text-center">
+                            <h4>Информация о соревнованиях</h4>
+                        </div>
                     </div>
-                </div>
-                <div class="row top-margin-10">
-                    <div class="col-md-12">
-                        <div class="panel-group">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">
-                                        <a data-toggle="collapse" href="#items">За что я голосую?</a>
-                                    </h3>
-                                </div>
-                                <div id="items" class="panel-collapse collapse">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">своевременность получения</li>
-                                        <li class="list-group-item">полнота информации</li>
-                                        <li class="list-group-item">удобство заявки на соревнования</li>
-                                        <li class="list-group-item">красочность информационного буклета и способность его рекламировать ориентирование, как вид спорта</li>
-                                        <li class="list-group-item">достаточность и ясность информации полученной на мандатной комиссии</li>
-                                    </ul>
+                    <div class="row top-margin-10">
+                        <div class="col-md-12">
+                            <div class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            <a data-toggle="collapse" href="#items">За что я голосую?</a>
+                                        </h3>
+                                    </div>
+                                    <div id="items" class="panel-collapse collapse">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">своевременность получения</li>
+                                            <li class="list-group-item">полнота информации</li>
+                                            <li class="list-group-item">удобство заявки на соревнования</li>
+                                            <li class="list-group-item">красочность информационного буклета и способность его рекламировать ориентирование, как вид спорта</li>
+                                            <li class="list-group-item">достаточность и ясность информации полученной на мандатной комиссии</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row top-margin-10">
-                    <div class="col-md-12">
-                        <small>Комментарий(необязательно!):</small>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        @Html.TextArea("comment", "", new { @class = "form-control", row = "2" })
-                    </div>
-                </div>
-                <div class="row top-margin-7">
-                    <div class="col-md-12 text-center">
-                        <h5>Оценка</h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-3 col-md-3 col-lg-3 text-right grade-border-right grade-padding-3">
-                        <small>Плохо</small>
-                    </div>
-                    <div class="col-xs-6 col-md-6 col-lg-6 text-center">
-                        <div class="grade text-center"><a href="/Competitions/Place?infoGrade=1" name="infoGrade" id="infoGrade">1</a></div>
-                        <div class="grade text-center"><a href="/Competitions/Place?infoGrade=2" name="infoGrade" id="infoGrade">2</a></div>
-                        <div class="grade text-center"><a href="/Competitions/Place?infoGrade=3" name="infoGrade" id="infoGrade">3</a></div>
-                    </div>
-                    <div class="col-xs-3 col-md-3 col-lg-3 text-left grade-border-left grade-padding-3">
-                        <small>Хорошо</small>
-                    </div>
-                </div>
-                <div class="row top-margin-20">
-                    <div class="col-md-12">
-                        <small>Вопросы:</small>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success"
-                                 role="progressbar" aria-valuenow="10"
-                                 aria-valuemin="0" aria-valuemax="100"
-                                 style="width:10%">1/10</div>
+                    <div class="row top-margin-10">
+                        <div class="col-md-12">
+                            <small>Комментарий(необязательно!):</small>
                         </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.TextArea("commentAboutInfo", "", new { @class = "form-control", row = "2" })
+                        </div>
+                    </div>
+                    <div class="row top-margin-7">
+                        <div class="col-md-12 text-center">
+                            <h5>Оценка</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3 col-md-3 col-lg-3 text-right grade-border-right grade-padding-3">
+                            <small>Плохо</small>
+                        </div>
+                        <div class="col-xs-6 col-md-6 col-lg-6 text-center grade-padding-3">
+                            @Html.Hidden("infoGrade")
+                            <div class="grade text-center"><div onclick="onClick(1)">1</div></div>
+                            <div class="grade text-center"><div onclick="onClick(2)">2</div></div>
+                            <div class="grade text-center"><div onclick="onClick(3)">3</div></div>
+                        </div>
+                        <div class="col-xs-3 col-md-3 col-lg-3 text-left grade-border-left grade-padding-3">
+                            <small>Хорошо</small>
+                        </div>
+                    </div>
+                    <div class="row top-margin-20">
+                        <div class="col-md-12">
+                            <small>Вопросы:</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success"
+                                     role="progressbar" aria-valuenow="10"
+                                     aria-valuemin="0" aria-valuemax="100"
+                                     style="width:10%">1/10</div>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
 </div>
+<script>
+    function onClick(value) {
+        $("#infoGrade").attr("value", value);
+        $("#form").submit();
+    }
+</script>
