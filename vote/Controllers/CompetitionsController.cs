@@ -425,6 +425,47 @@ namespace vote.Controllers
             return View("Finish", voteViewModel);
         }
 
+        [HttpPost]
+        public ActionResult Finish(int finishGrade, string commentAboutFinish, VoteViewModel voteViewModel)
+        {
+            if (voteViewModel == null) return View("Error");
+
+            if (commentAboutFinish != string.Empty)
+            {
+
+                // create comment
+                Comment newComment = new Comment() { Text = commentAboutFinish, FieldName = "Finish" };
+
+                // get user
+                ApplicationUser user = new ApplicationUser();
+                if (getUserByName(User.Identity.Name, ref user) == "Error")
+                {
+                    return View("Error");
+                }
+
+                Competition competition = new Competition();
+                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
+                {
+                    return View("Error");
+                }
+
+                // assign user and competition to comment
+                newComment.User = user;
+                newComment.Competition = competition;
+                newComment.UserId = user.Id;
+                newComment.CompetitionId = competition.Id;
+
+                // create new comment in db
+                db.Comments.Add(newComment);
+                db.SaveChanges();
+            }
+
+            voteViewModel.Finish = finishGrade;
+            ModelState.Clear();
+
+            return View("Results", voteViewModel);
+        }
+
         private string getCompetitionById(int competitionId, ref Competition competition)
         {
             try
