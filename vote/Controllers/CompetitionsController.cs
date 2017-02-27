@@ -139,16 +139,6 @@ namespace vote.Controllers
             return View("Info", voteViewModel);
         }
 
-        public ActionResult Place(int infoGrade, VoteViewModel VoteViewModel)
-        {
-            if (VoteViewModel == null) return View("Error");
-
-            VoteViewModel.Info = infoGrade;
-
-            return View("Place", VoteViewModel);
-        }
-
-
         [HttpPost]
         public ActionResult Info(int infoGrade, string commentAboutInfo, VoteViewModel voteViewModel)
         {
@@ -187,6 +177,47 @@ namespace vote.Controllers
             voteViewModel.Info = infoGrade;
             ModelState.Clear();
             return View("Place", voteViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Place(int placeGrade, string commentAboutPlace, VoteViewModel voteViewModel)
+        {
+            if (voteViewModel == null) return View("Error");
+
+            if (commentAboutPlace != string.Empty)
+            {
+
+                // create comment
+                Comment newComment = new Comment() { Text = commentAboutPlace, FieldName = "Place" };
+
+                // get user
+                ApplicationUser user = new ApplicationUser();
+                if (getUserByName(User.Identity.Name, ref user) == "Error")
+                {
+                    return View("Error");
+                }
+
+                Competition competition = new Competition();
+                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
+                {
+                    return View("Error");
+                }
+
+                // assign user and competition to comment
+                newComment.User = user;
+                newComment.Competition = competition;
+                newComment.UserId = user.Id;
+                newComment.CompetitionId = competition.Id;
+
+                // create new comment in db
+                db.Comments.Add(newComment);
+                db.SaveChanges();
+            }
+
+            voteViewModel.Place = placeGrade;
+            ModelState.Clear();
+
+            return View("Map", voteViewModel);
         }
 
         private string getCompetitionById(int competitionId, ref Competition competition)
