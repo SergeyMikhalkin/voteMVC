@@ -17,7 +17,7 @@ namespace vote.Controllers
         public ActionResult All()
         {
             string userName = User.Identity.Name;
-            if(userName != string.Empty)
+            if (userName != string.Empty)
             {
                 string userId = string.Empty;
                 try
@@ -33,7 +33,7 @@ namespace vote.Controllers
                 FillVotedCompetitions(votedCompetitions, userId);
                 ViewBag.VotedCompetitions = votedCompetitions;
             }
-            
+
             Hashtable CountOfVoters = new Hashtable();
             FillCountOfVoters(CountOfVoters);
             ViewBag.CountOfVoters = CountOfVoters;
@@ -54,7 +54,7 @@ namespace vote.Controllers
             {
                 votedCompetitions.Add(competition.Id, true);
             }
-                                    
+
         }
 
         // fill hashtable 'competition' -> 'count of voters'
@@ -127,14 +127,16 @@ namespace vote.Controllers
         }
 
         [HttpPost]
-        public ActionResult Group(int groupIdFromForm, VoteViewModel VoteViewModel)
+        public ActionResult Group(int groupIdFromForm, VoteViewModel voteViewModel)
         {
 
-            if (VoteViewModel == null) return View("Error");
+            if (voteViewModel == null) return View("Error");
 
-            VoteViewModel.GroupID = groupIdFromForm;
+            voteViewModel.GroupID = groupIdFromForm;
 
-            return View("Info", VoteViewModel);
+            ModelState.Clear();
+
+            return View("Info", voteViewModel);
         }
 
         public ActionResult Place(int infoGrade, VoteViewModel VoteViewModel)
@@ -183,7 +185,7 @@ namespace vote.Controllers
             }
 
             voteViewModel.Info = infoGrade;
-
+            ModelState.Clear();
             return View("Place", voteViewModel);
         }
 
