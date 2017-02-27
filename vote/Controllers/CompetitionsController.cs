@@ -220,6 +220,47 @@ namespace vote.Controllers
             return View("Map", voteViewModel);
         }
 
+        [HttpPost]
+        public ActionResult Map(int mapGrade, string commentAboutMap, VoteViewModel voteViewModel)
+        {
+            if (voteViewModel == null) return View("Error");
+
+            if (commentAboutMap != string.Empty)
+            {
+
+                // create comment
+                Comment newComment = new Comment() { Text = commentAboutMap, FieldName = "Map" };
+
+                // get user
+                ApplicationUser user = new ApplicationUser();
+                if (getUserByName(User.Identity.Name, ref user) == "Error")
+                {
+                    return View("Error");
+                }
+
+                Competition competition = new Competition();
+                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
+                {
+                    return View("Error");
+                }
+
+                // assign user and competition to comment
+                newComment.User = user;
+                newComment.Competition = competition;
+                newComment.UserId = user.Id;
+                newComment.CompetitionId = competition.Id;
+
+                // create new comment in db
+                db.Comments.Add(newComment);
+                db.SaveChanges();
+            }
+
+            voteViewModel.Map = mapGrade;
+            ModelState.Clear();
+
+            return View("Print", voteViewModel);
+        }
+
         private string getCompetitionById(int competitionId, ref Competition competition)
         {
             try
