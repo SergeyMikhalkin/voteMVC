@@ -507,6 +507,88 @@ namespace vote.Controllers
             return View("Center", voteViewModel);
         }
 
+        [HttpPost]
+        public ActionResult Center(int centerGrade, string commentAboutCenter, VoteViewModel voteViewModel)
+        {
+            if (voteViewModel == null) return View("Error");
+
+            if (commentAboutCenter != string.Empty)
+            {
+
+                // create comment
+                Comment newComment = new Comment() { Text = commentAboutCenter, FieldName = "Center" };
+
+                // get user
+                ApplicationUser user = new ApplicationUser();
+                if (getUserByName(User.Identity.Name, ref user) == "Error")
+                {
+                    return View("Error");
+                }
+
+                Competition competition = new Competition();
+                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
+                {
+                    return View("Error");
+                }
+
+                // assign user and competition to comment
+                newComment.User = user;
+                newComment.Competition = competition;
+                newComment.UserId = user.Id;
+                newComment.CompetitionId = competition.Id;
+
+                // create new comment in db
+                db.Comments.Add(newComment);
+                db.SaveChanges();
+            }
+
+            voteViewModel.Center = centerGrade;
+
+            // copy results for save
+            Vote voteForSave = new Vote();
+
+            voteForSave.Info = voteViewModel.Info;
+            voteForSave.Place = voteViewModel.Place;
+            voteForSave.Map = voteViewModel.Map;
+            voteForSave.Print = voteViewModel.Print;
+            voteForSave.Sealed = voteViewModel.Sealed;
+            voteForSave.Distance = voteViewModel.Distance;
+            voteForSave.Start = voteViewModel.Start;
+            voteForSave.Finish = voteViewModel.Finish;
+            voteForSave.Results = voteViewModel.Results;
+            voteForSave.Center = voteViewModel.Center;
+
+            try
+            {
+                ApplicationUser user = db.Users.Find(voteViewModel.UserID);
+                Competition competition = db.Competitions.Find(voteViewModel.CompetitionID);
+                Group group = db.Groups.Find(voteViewModel.GroupID);
+
+                voteForSave.User = user;
+                voteForSave.UserId = user.Id;
+                voteForSave.Competition = competition;
+                voteForSave.CompetitionID = competition.Id;
+                voteForSave.Group = group;
+                voteForSave.GroupID = group.Id;
+
+                // save results
+                db.Votes.Add(voteForSave);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return View("Error");
+            }
+            
+            // go to results
+            return RedirectToRoute(new
+            {
+                controller = "Results",
+                action = "Show",
+                id = voteForSave.Id
+            });
+        }
+
         private string getCompetitionById(int competitionId, ref Competition competition)
         {
             try
