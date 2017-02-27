@@ -261,6 +261,47 @@ namespace vote.Controllers
             return View("Print", voteViewModel);
         }
 
+        [HttpPost]
+        public ActionResult Print(int printGrade, string commentAboutPrint, VoteViewModel voteViewModel)
+        {
+            if (voteViewModel == null) return View("Error");
+
+            if (commentAboutPrint != string.Empty)
+            {
+
+                // create comment
+                Comment newComment = new Comment() { Text = commentAboutPrint, FieldName = "Print" };
+
+                // get user
+                ApplicationUser user = new ApplicationUser();
+                if (getUserByName(User.Identity.Name, ref user) == "Error")
+                {
+                    return View("Error");
+                }
+
+                Competition competition = new Competition();
+                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
+                {
+                    return View("Error");
+                }
+
+                // assign user and competition to comment
+                newComment.User = user;
+                newComment.Competition = competition;
+                newComment.UserId = user.Id;
+                newComment.CompetitionId = competition.Id;
+
+                // create new comment in db
+                db.Comments.Add(newComment);
+                db.SaveChanges();
+            }
+
+            voteViewModel.Print = printGrade;
+            ModelState.Clear();
+
+            return View("Sealed", voteViewModel);
+        }
+
         private string getCompetitionById(int competitionId, ref Competition competition)
         {
             try
