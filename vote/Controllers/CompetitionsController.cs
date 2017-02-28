@@ -52,7 +52,7 @@ namespace vote.Controllers
                                     select c;
             foreach (var competition in _votedCompetitons)
             {
-                votedCompetitions.Add(competition.Id, true);
+                votedCompetitions.Add(competition.CompetitionID, true);
             }
 
         }
