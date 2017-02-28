@@ -126,6 +126,7 @@ namespace vote.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Group(int groupIdFromForm, VoteViewModel voteViewModel)
         {
@@ -139,6 +140,7 @@ namespace vote.Controllers
             return View("Info", voteViewModel);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Info(int infoGrade, string commentAboutInfo, VoteViewModel voteViewModel)
         {
@@ -146,39 +148,16 @@ namespace vote.Controllers
 
             if (commentAboutInfo != string.Empty)
             {
-
-                // create comment
-                Comment newComment = new Comment() { Text = commentAboutInfo, FieldName = "Info" };
-
-                // get user
-                ApplicationUser user = new ApplicationUser();
-                if (getUserByName(User.Identity.Name, ref user) == "Error")
-                {
-                    return View("Error");
-                }
-
-                Competition competition = new Competition();
-                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
-                {
-                    return View("Error");
-                }
-
-                // assign user and competition to comment
-                newComment.User = user;
-                newComment.Competition = competition;
-                newComment.UserId = user.Id;
-                newComment.CompetitionId = competition.Id;
-
-                // create new comment in db
-                db.Comments.Add(newComment);
-                db.SaveChanges();
+                if (AddComment(commentAboutInfo, "Info", User.Identity.Name, voteViewModel.CompetitionID) == false) return View("Error");
             }
 
             voteViewModel.Info = infoGrade;
             ModelState.Clear();
+
             return View("Place", voteViewModel);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Place(int placeGrade, string commentAboutPlace, VoteViewModel voteViewModel)
         {
@@ -186,32 +165,7 @@ namespace vote.Controllers
 
             if (commentAboutPlace != string.Empty)
             {
-
-                // create comment
-                Comment newComment = new Comment() { Text = commentAboutPlace, FieldName = "Place" };
-
-                // get user
-                ApplicationUser user = new ApplicationUser();
-                if (getUserByName(User.Identity.Name, ref user) == "Error")
-                {
-                    return View("Error");
-                }
-
-                Competition competition = new Competition();
-                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
-                {
-                    return View("Error");
-                }
-
-                // assign user and competition to comment
-                newComment.User = user;
-                newComment.Competition = competition;
-                newComment.UserId = user.Id;
-                newComment.CompetitionId = competition.Id;
-
-                // create new comment in db
-                db.Comments.Add(newComment);
-                db.SaveChanges();
+                if (AddComment(commentAboutPlace, "Place", User.Identity.Name, voteViewModel.CompetitionID) == false) return View("Error");
             }
 
             voteViewModel.Place = placeGrade;
@@ -220,6 +174,7 @@ namespace vote.Controllers
             return View("Map", voteViewModel);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Map(int mapGrade, string commentAboutMap, VoteViewModel voteViewModel)
         {
@@ -227,32 +182,7 @@ namespace vote.Controllers
 
             if (commentAboutMap != string.Empty)
             {
-
-                // create comment
-                Comment newComment = new Comment() { Text = commentAboutMap, FieldName = "Map" };
-
-                // get user
-                ApplicationUser user = new ApplicationUser();
-                if (getUserByName(User.Identity.Name, ref user) == "Error")
-                {
-                    return View("Error");
-                }
-
-                Competition competition = new Competition();
-                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
-                {
-                    return View("Error");
-                }
-
-                // assign user and competition to comment
-                newComment.User = user;
-                newComment.Competition = competition;
-                newComment.UserId = user.Id;
-                newComment.CompetitionId = competition.Id;
-
-                // create new comment in db
-                db.Comments.Add(newComment);
-                db.SaveChanges();
+                if (AddComment(commentAboutMap, "Map", User.Identity.Name, voteViewModel.CompetitionID) == false) return View("Error");
             }
 
             voteViewModel.Map = mapGrade;
@@ -261,6 +191,7 @@ namespace vote.Controllers
             return View("Print", voteViewModel);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Print(int printGrade, string commentAboutPrint, VoteViewModel voteViewModel)
         {
@@ -268,32 +199,7 @@ namespace vote.Controllers
 
             if (commentAboutPrint != string.Empty)
             {
-
-                // create comment
-                Comment newComment = new Comment() { Text = commentAboutPrint, FieldName = "Print" };
-
-                // get user
-                ApplicationUser user = new ApplicationUser();
-                if (getUserByName(User.Identity.Name, ref user) == "Error")
-                {
-                    return View("Error");
-                }
-
-                Competition competition = new Competition();
-                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
-                {
-                    return View("Error");
-                }
-
-                // assign user and competition to comment
-                newComment.User = user;
-                newComment.Competition = competition;
-                newComment.UserId = user.Id;
-                newComment.CompetitionId = competition.Id;
-
-                // create new comment in db
-                db.Comments.Add(newComment);
-                db.SaveChanges();
+                if (AddComment(commentAboutPrint, "Print", User.Identity.Name, voteViewModel.CompetitionID) == false) return View("Error");
             }
 
             voteViewModel.Print = printGrade;
@@ -302,6 +208,7 @@ namespace vote.Controllers
             return View("Sealed", voteViewModel);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Sealed(int sealedGrade, string commentAboutSealed, VoteViewModel voteViewModel)
         {
@@ -309,32 +216,7 @@ namespace vote.Controllers
 
             if (commentAboutSealed != string.Empty)
             {
-
-                // create comment
-                Comment newComment = new Comment() { Text = commentAboutSealed, FieldName = "Sealed" };
-
-                // get user
-                ApplicationUser user = new ApplicationUser();
-                if (getUserByName(User.Identity.Name, ref user) == "Error")
-                {
-                    return View("Error");
-                }
-
-                Competition competition = new Competition();
-                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
-                {
-                    return View("Error");
-                }
-
-                // assign user and competition to comment
-                newComment.User = user;
-                newComment.Competition = competition;
-                newComment.UserId = user.Id;
-                newComment.CompetitionId = competition.Id;
-
-                // create new comment in db
-                db.Comments.Add(newComment);
-                db.SaveChanges();
+                if (AddComment(commentAboutSealed, "Sealed", User.Identity.Name, voteViewModel.CompetitionID) == false) return View("Error");
             }
 
             voteViewModel.Sealed = sealedGrade;
@@ -343,6 +225,7 @@ namespace vote.Controllers
             return View("Distance", voteViewModel);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Distance(int distanceGrade, string commentAboutDistance, VoteViewModel voteViewModel)
         {
@@ -350,32 +233,7 @@ namespace vote.Controllers
 
             if (commentAboutDistance != string.Empty)
             {
-
-                // create comment
-                Comment newComment = new Comment() { Text = commentAboutDistance, FieldName = "Distance" };
-
-                // get user
-                ApplicationUser user = new ApplicationUser();
-                if (getUserByName(User.Identity.Name, ref user) == "Error")
-                {
-                    return View("Error");
-                }
-
-                Competition competition = new Competition();
-                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
-                {
-                    return View("Error");
-                }
-
-                // assign user and competition to comment
-                newComment.User = user;
-                newComment.Competition = competition;
-                newComment.UserId = user.Id;
-                newComment.CompetitionId = competition.Id;
-
-                // create new comment in db
-                db.Comments.Add(newComment);
-                db.SaveChanges();
+                if (AddComment(commentAboutDistance, "Distance", User.Identity.Name, voteViewModel.CompetitionID) == false) return View("Error");
             }
 
             voteViewModel.Distance = distanceGrade;
@@ -384,6 +242,7 @@ namespace vote.Controllers
             return View("Start", voteViewModel);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Start(int startGrade, string commentAboutStart, VoteViewModel voteViewModel)
         {
@@ -391,32 +250,7 @@ namespace vote.Controllers
 
             if (commentAboutStart != string.Empty)
             {
-
-                // create comment
-                Comment newComment = new Comment() { Text = commentAboutStart, FieldName = "Start" };
-
-                // get user
-                ApplicationUser user = new ApplicationUser();
-                if (getUserByName(User.Identity.Name, ref user) == "Error")
-                {
-                    return View("Error");
-                }
-
-                Competition competition = new Competition();
-                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
-                {
-                    return View("Error");
-                }
-
-                // assign user and competition to comment
-                newComment.User = user;
-                newComment.Competition = competition;
-                newComment.UserId = user.Id;
-                newComment.CompetitionId = competition.Id;
-
-                // create new comment in db
-                db.Comments.Add(newComment);
-                db.SaveChanges();
+                if (AddComment(commentAboutStart, "Start", User.Identity.Name, voteViewModel.CompetitionID) == false) return View("Error");
             }
 
             voteViewModel.Start = startGrade;
@@ -425,6 +259,7 @@ namespace vote.Controllers
             return View("Finish", voteViewModel);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Finish(int finishGrade, string commentAboutFinish, VoteViewModel voteViewModel)
         {
@@ -432,32 +267,7 @@ namespace vote.Controllers
 
             if (commentAboutFinish != string.Empty)
             {
-
-                // create comment
-                Comment newComment = new Comment() { Text = commentAboutFinish, FieldName = "Finish" };
-
-                // get user
-                ApplicationUser user = new ApplicationUser();
-                if (getUserByName(User.Identity.Name, ref user) == "Error")
-                {
-                    return View("Error");
-                }
-
-                Competition competition = new Competition();
-                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
-                {
-                    return View("Error");
-                }
-
-                // assign user and competition to comment
-                newComment.User = user;
-                newComment.Competition = competition;
-                newComment.UserId = user.Id;
-                newComment.CompetitionId = competition.Id;
-
-                // create new comment in db
-                db.Comments.Add(newComment);
-                db.SaveChanges();
+                if (AddComment(commentAboutFinish, "Finish", User.Identity.Name, voteViewModel.CompetitionID) == false) return View("Error");
             }
 
             voteViewModel.Finish = finishGrade;
@@ -466,6 +276,7 @@ namespace vote.Controllers
             return View("Results", voteViewModel);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Results(int resultsGrade, string commentAboutResults, VoteViewModel voteViewModel)
         {
@@ -473,32 +284,7 @@ namespace vote.Controllers
 
             if (commentAboutResults != string.Empty)
             {
-
-                // create comment
-                Comment newComment = new Comment() { Text = commentAboutResults, FieldName = "Results" };
-
-                // get user
-                ApplicationUser user = new ApplicationUser();
-                if (getUserByName(User.Identity.Name, ref user) == "Error")
-                {
-                    return View("Error");
-                }
-
-                Competition competition = new Competition();
-                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
-                {
-                    return View("Error");
-                }
-
-                // assign user and competition to comment
-                newComment.User = user;
-                newComment.Competition = competition;
-                newComment.UserId = user.Id;
-                newComment.CompetitionId = competition.Id;
-
-                // create new comment in db
-                db.Comments.Add(newComment);
-                db.SaveChanges();
+                if (AddComment(commentAboutResults, "Results", User.Identity.Name, voteViewModel.CompetitionID) == false) return View("Error");
             }
 
             voteViewModel.Results = resultsGrade;
@@ -507,6 +293,7 @@ namespace vote.Controllers
             return View("Center", voteViewModel);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Center(int centerGrade, string commentAboutCenter, VoteViewModel voteViewModel)
         {
@@ -514,36 +301,26 @@ namespace vote.Controllers
 
             if (commentAboutCenter != string.Empty)
             {
-
-                // create comment
-                Comment newComment = new Comment() { Text = commentAboutCenter, FieldName = "Center" };
-
-                // get user
-                ApplicationUser user = new ApplicationUser();
-                if (getUserByName(User.Identity.Name, ref user) == "Error")
-                {
-                    return View("Error");
-                }
-
-                Competition competition = new Competition();
-                if (getCompetitionById(voteViewModel.CompetitionID, ref competition) == "Error")
-                {
-                    return View("Error");
-                }
-
-                // assign user and competition to comment
-                newComment.User = user;
-                newComment.Competition = competition;
-                newComment.UserId = user.Id;
-                newComment.CompetitionId = competition.Id;
-
-                // create new comment in db
-                db.Comments.Add(newComment);
-                db.SaveChanges();
+                if (AddComment(commentAboutCenter, "Center", User.Identity.Name, voteViewModel.CompetitionID) == false) return View("Error");
             }
 
             voteViewModel.Center = centerGrade;
 
+            int voteId;
+
+            if(SaveVote(voteViewModel, out voteId) == false) return View("Error");
+            
+            // go to results
+            return RedirectToRoute(new
+            {
+                controller = "Results",
+                action = "Show",
+                id = voteId 
+            });
+        }
+
+        private bool SaveVote(VoteViewModel voteViewModel, out int voteId)
+        {
             // copy results for save
             Vote voteForSave = new Vote();
 
@@ -577,16 +354,43 @@ namespace vote.Controllers
             }
             catch (Exception)
             {
-                return View("Error");
+                voteId = -1;
+                return false;
             }
-            
-            // go to results
-            return RedirectToRoute(new
+
+            voteId = voteForSave.Id;
+            return true;
+        }
+
+        private bool AddComment(string comment, string fieldName, string userName, int competitionId)
+        {
+            // create comment
+            Comment newComment = new Comment() { Text = comment, FieldName = fieldName };
+
+            // get user
+            ApplicationUser user = new ApplicationUser();
+            if (getUserByName(userName, ref user) == "Error")
             {
-                controller = "Results",
-                action = "Show",
-                id = voteForSave.Id
-            });
+                return false;
+            }
+
+            Competition competition = new Competition();
+            if (getCompetitionById(competitionId, ref competition) == "Error")
+            {
+                return false;
+            }
+
+            // assign user and competition to comment
+            newComment.User = user;
+            newComment.Competition = competition;
+            newComment.UserId = user.Id;
+            newComment.CompetitionId = competition.Id;
+
+            // create new comment in db
+            db.Comments.Add(newComment);
+            db.SaveChanges();
+
+            return true;
         }
 
         private string getCompetitionById(int competitionId, ref Competition competition)
