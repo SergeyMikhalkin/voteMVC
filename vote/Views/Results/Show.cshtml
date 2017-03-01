@@ -1,0 +1,290 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-xs-12 text-center">
+            <h2>Общий средний балл : <strong>@ViewBag.TotalForCompetition</strong></h2>
+        </div>
+    </div>
+    <div class="row top-margin-10">
+        @if (ViewBag.CountOfTables == 2)
+        {
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Мужчины</strong>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.MenResults.Info</small></span>
+                        <small>Информация о соревнованиях</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.MenResults.Place</small></span>
+                        <small>Местность</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.MenResults.Map</small></span>
+                        <small>Карта</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.MenResults.Print</small></span>
+                        <small>Печать</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.MenResults.Sealed</small></span>
+                        <small>Герметизация карты</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.MenResults.Distance</small></span>
+                        <small>Дистанция</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.MenResults.Start</small></span>
+                        <small>Старт</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.MenResults.Finish</small></span>
+                        <small>Финиш</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.MenResults.Results</small></span>
+                        <small>Результаты</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.MenResults.Center</small></span>
+                        <small>Центр соревнований</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.MenResults.CountOfVoters</small></span>
+                        <small>Количество голосов</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.MenResults.Middle</small></span>
+                        <small>Суммарный средний балл</small>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Женщины</strong>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.WomanResults.Info</small></span>
+                        <small>Информация о соревнованиях</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.WomanResults.Place</small></span>
+                        <small>Местность</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.WomanResults.Map</small></span>
+                        <small>Карта</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.WomanResults.Print</small></span>
+                        <small>Печать</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.WomanResults.Sealed</small></span>
+                        <small>Герметизация карты</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.WomanResults.Distance</small></span>
+                        <small>Дистанция</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.WomanResults.Start</small></span>
+                        <small>Старт</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.WomanResults.Finish</small></span>
+                        <small>Финиш</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.WomanResults.Results</small></span>
+                        <small>Результаты</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.WomanResults.Center</small></span>
+                        <small>Центр соревнований</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.WomanResults.CountOfVoters</small></span>
+                        <small>Количество голосов</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.WomanResults.Middle</small></span>
+                        <small>Суммарный средний балл</small>
+                    </li>
+                </ul>
+            </div>
+        }
+        @if (ViewBag.CountOfTables == 3)
+        {
+            <div class="col-lg-4 col-md-4 col-xs-12">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>МЖ10-20 (Дети, юниоры, юниорки)</strong>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsUnder21.Info</small></span>
+                        <small>Информация о соревнованиях</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsUnder21.Place</small></span>
+                        <small>Местность</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsUnder21.Map</small></span>
+                        <small>Карта</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsUnder21.Print</small></span>
+                        <small>Печать</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsUnder21.Sealed</small></span>
+                        <small>Герметизация карты</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsUnder21.Distance</small></span>
+                        <small>Дистанция</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsUnder21.Start</small></span>
+                        <small>Старт</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsUnder21.Finish</small></span>
+                        <small>Финиш</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsUnder21.Results</small></span>
+                        <small>Результаты</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsUnder21.Center</small></span>
+                        <small>Центр соревнований</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsUnder21.CountOfVoters</small></span>
+                        <small>Количество голосов</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsUnder21.Middle</small></span>
+                        <small>Суммарный средний балл</small>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-12">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>МЖ21Е(А, В)</strong>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.Results21.Info</small></span>
+                        <small>Информация о соревнованиях</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.Results21.Place</small></span>
+                        <small>Местность</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.Results21.Map</small></span>
+                        <small>Карта</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.Results21.Print</small></span>
+                        <small>Печать</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.Results21.Sealed</small></span>
+                        <small>Герметизация карты</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.Results21.Distance</small></span>
+                        <small>Дистанция</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.Results21.Start</small></span>
+                        <small>Старт</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.Results21.Finish</small></span>
+                        <small>Финиш</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.Results21.Results</small></span>
+                        <small>Результаты</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.Results21.Center</small></span>
+                        <small>Центр соревнований</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.Results21.CountOfVoters</small></span>
+                        <small>Количество голосов</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.Results21.Middle</small></span>
+                        <small>Суммарный средний балл</small>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-12">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>МЖ35-70 (Ветераны)</strong>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsOver21.Info</small></span>
+                        <small>Информация о соревнованиях</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsOver21.Place</small></span>
+                        <small>Местность</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsOver21.Map</small></span>
+                        <small>Карта</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsOver21.Print</small></span>
+                        <small>Печать</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsOver21.Sealed</small></span>
+                        <small>Герметизация карты</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsOver21.Distance</small></span>
+                        <small>Дистанция</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsOver21.Start</small></span>
+                        <small>Старт</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsOver21.Finish</small></span>
+                        <small>Финиш</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsOver21.Results</small></span>
+                        <small>Результаты</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsOver21.Center</small></span>
+                        <small>Центр соревнований</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsOver21.CountOfVoters</small></span>
+                        <small>Количество голосов</small>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge"><small>@ViewBag.ResultsOver21.Middle</small></span>
+                        <small>Суммарный средний балл</small>
+                    </li>
+                </ul>
+            </div>
+        }
+    </div>
+</div>
