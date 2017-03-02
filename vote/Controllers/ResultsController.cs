@@ -179,9 +179,13 @@ namespace vote.Controllers
             count += results21.Middle == 0 ? 0 : 1;
             count += resultOver21.Middle == 0 ? 0 : 1;
 
-            if(count != 0)
+            double ResultsUnder21 = (double)resultsUnder21.Middle;
+            double Results21 = (double)results21.Middle;
+            double ResultsOver21 = (double)resultOver21.Middle;
+
+            if (count != 0)
             {
-                total = (resultsUnder21.Middle + results21.Middle + resultOver21.Middle) / count;
+                total = (ResultsUnder21 + Results21 + ResultsOver21) / count;
             }
            
             return total;
@@ -196,14 +200,16 @@ namespace vote.Controllers
             count += men.Middle == 0 ? 0 : 1;
             count += woman.Middle == 0 ? 0 : 1;
 
+            double ResultsMen = (double)men.Middle;
+            double ResultsWoman = (double)woman.Middle;
+
             if (count != 0)
             {
-                total = (men.Middle + woman.Middle) / count;
+                total = (ResultsMen + ResultsWoman) / count;
             }
 
             return total;
         }
-
 
     }
 }

@@ -283,6 +283,11 @@ textarea {
   .error-blockquote {
       margin-top: 10px;
   }
+
+  h2{
+       font-size: 15px;
+   }
+
 }
 
 .navbar-custom .navbar-link {
