@@ -15,42 +15,112 @@
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.MenResults.Info</small></span>
                         <small>Информация о соревнованиях</small>
+                        @if (@ViewBag.MenComments.Info != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#info" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.MenComments.Info
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.MenResults.Place</small></span>
                         <small>Местность</small>
+                        @if (@ViewBag.MenComments.Place != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#place" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.MenComments.Place
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.MenResults.Map</small></span>
                         <small>Карта</small>
+                        @if (@ViewBag.MenComments.Map != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#map" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.MenComments.Map
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.MenResults.Print</small></span>
                         <small>Печать</small>
+                        @if (@ViewBag.MenComments.Print != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#print" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.MenComments.Print
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.MenResults.Sealed</small></span>
                         <small>Герметизация карты</small>
+                        @if (@ViewBag.MenComments.Sealed != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#sealed" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.MenComments.Sealed
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.MenResults.Distance</small></span>
                         <small>Дистанция</small>
+                        @if (@ViewBag.MenComments.Distance != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#distance" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.MenComments.Distance
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.MenResults.Start</small></span>
                         <small>Старт</small>
+                        @if (@ViewBag.MenComments.Start != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#start" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.MenComments.Start
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.MenResults.Finish</small></span>
                         <small>Финиш</small>
+                        @if (@ViewBag.MenComments.Finish != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#finish" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.MenComments.Finish
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.MenResults.Results</small></span>
                         <small>Результаты</small>
+                        @if (@ViewBag.MenComments.Results != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#results" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.MenComments.Results
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.MenResults.Center</small></span>
                         <small>Центр соревнований</small>
+                        @if (@ViewBag.MenComments.Center != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#center" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.MenComments.Center
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.MenResults.CountOfVoters</small></span>
@@ -70,42 +140,112 @@
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.WomanResults.Info</small></span>
                         <small>Информация о соревнованиях</small>
+                        @if (@ViewBag.WomanComments.Info != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#info" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.WomanComments.Info
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.WomanResults.Place</small></span>
                         <small>Местность</small>
+                        @if (@ViewBag.WomanComments.Place != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#place" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.WomanComments.Place
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.WomanResults.Map</small></span>
                         <small>Карта</small>
+                        @if (@ViewBag.WomanComments.Map != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#map" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.WomanComments.Map
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.WomanResults.Print</small></span>
                         <small>Печать</small>
+                        @if (@ViewBag.WomanComments.Print != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#print" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.WomanComments.Print
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.WomanResults.Sealed</small></span>
                         <small>Герметизация карты</small>
+                        @if (@ViewBag.WomanComments.Sealed != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#sealed" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.WomanComments.Sealed
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.WomanResults.Distance</small></span>
                         <small>Дистанция</small>
+                        @if (@ViewBag.WomanComments.Distance != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#distance" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.WomanComments.Distance
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.WomanResults.Start</small></span>
                         <small>Старт</small>
+                        @if (@ViewBag.WomanComments.Start != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#start" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.WomanComments.Start
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.WomanResults.Finish</small></span>
                         <small>Финиш</small>
+                        @if (@ViewBag.WomanComments.Finish != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#finish" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.WomanComments.Finish
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.WomanResults.Results</small></span>
                         <small>Результаты</small>
+                        @if (@ViewBag.WomanComments.Results != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#results" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.WomanComments.Results
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.WomanResults.Center</small></span>
                         <small>Центр соревнований</small>
+                        @if (@ViewBag.WomanComments.Center != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#center" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.WomanComments.Center
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.WomanResults.CountOfVoters</small></span>
@@ -128,42 +268,112 @@
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsUnder21.Info</small></span>
                         <small>Информация о соревнованиях</small>
+                        @if (@ViewBag.CommentsUnder21.Info != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#info" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsUnder21.Info
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsUnder21.Place</small></span>
                         <small>Местность</small>
+                        @if (@ViewBag.CommentsUnder21.Place != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#place" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsUnder21.Place
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsUnder21.Map</small></span>
                         <small>Карта</small>
+                        @if (@ViewBag.CommentsUnder21.Map != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#map" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsUnder21.Map
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsUnder21.Print</small></span>
                         <small>Печать</small>
+                        @if (@ViewBag.CommentsUnder21.Print != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#print" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsUnder21.Print
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsUnder21.Sealed</small></span>
                         <small>Герметизация карты</small>
+                        @if (@ViewBag.CommentsUnder21.Sealed != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#sealed" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsUnder21.Sealed
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsUnder21.Distance</small></span>
                         <small>Дистанция</small>
+                        @if (@ViewBag.CommentsUnder21.Distance != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#distance" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsUnder21.Distance
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsUnder21.Start</small></span>
                         <small>Старт</small>
+                        @if (@ViewBag.CommentsUnder21.Start != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#start" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsUnder21.Start
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsUnder21.Finish</small></span>
                         <small>Финиш</small>
+                        @if (@ViewBag.CommentsUnder21.Finish != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#finish" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsUnder21.Finish
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsUnder21.Results</small></span>
                         <small>Результаты</small>
+                        @if (@ViewBag.CommentsUnder21.Results != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#results" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsUnder21.Results
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsUnder21.Center</small></span>
                         <small>Центр соревнований</small>
+                        @if (@ViewBag.CommentsUnder21.Center != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#center" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsUnder21.Center
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsUnder21.CountOfVoters</small></span>
@@ -183,42 +393,112 @@
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.Results21.Info</small></span>
                         <small>Информация о соревнованиях</small>
+                        @if (@ViewBag.Comments21.Info != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#info" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.Comments21.Info
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.Results21.Place</small></span>
                         <small>Местность</small>
+                        @if (@ViewBag.Comments21.Place != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#place" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.Comments21.Place
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.Results21.Map</small></span>
                         <small>Карта</small>
+                        @if (@ViewBag.Comments21.Map != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#map" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.Comments21.Map
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.Results21.Print</small></span>
                         <small>Печать</small>
+                        @if (@ViewBag.Comments21.Print != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#print" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.Comments21.Print
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.Results21.Sealed</small></span>
                         <small>Герметизация карты</small>
+                        @if (@ViewBag.Comments21.Sealed != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#sealed" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.Comments21.Sealed
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.Results21.Distance</small></span>
                         <small>Дистанция</small>
+                        @if (@ViewBag.Comments21.Distance != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#distance" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.Comments21.Distance
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.Results21.Start</small></span>
                         <small>Старт</small>
+                        @if (@ViewBag.Comments21.Start != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#start" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.Comments21.Start
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.Results21.Finish</small></span>
                         <small>Финиш</small>
+                        @if (@ViewBag.Comments21.Finish != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#finish" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.Comments21.Finish
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.Results21.Results</small></span>
                         <small>Результаты</small>
+                        @if (@ViewBag.Comments21.Results != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#results" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.Comments21.Results
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.Results21.Center</small></span>
                         <small>Центр соревнований</small>
+                        @if (@ViewBag.Comments21.Center != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#center" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.Comments21.Center
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.Results21.CountOfVoters</small></span>
@@ -238,42 +518,112 @@
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsOver21.Info</small></span>
                         <small>Информация о соревнованиях</small>
+                        @if (@ViewBag.CommentsOver21.Info != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#info" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsOver21.Info
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsOver21.Place</small></span>
                         <small>Местность</small>
+                        @if (@ViewBag.CommentsOver21.Place != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#place" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsOver21.Place
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsOver21.Map</small></span>
                         <small>Карта</small>
+                        @if (@ViewBag.CommentsOver21.Map != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#map" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsOver21.Map
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsOver21.Print</small></span>
                         <small>Печать</small>
+                        @if (@ViewBag.CommentsOver21.Print != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#print" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsOver21.Print
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsOver21.Sealed</small></span>
                         <small>Герметизация карты</small>
+                        @if (@ViewBag.CommentsOver21.Sealed != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#sealed" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsOver21.Sealed
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsOver21.Distance</small></span>
                         <small>Дистанция</small>
+                        @if (@ViewBag.CommentsOver21.Distance != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#distance" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsOver21.Distance
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsOver21.Start</small></span>
                         <small>Старт</small>
+                        @if (@ViewBag.CommentsOver21.Start != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#start" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsOver21.Start
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsOver21.Finish</small></span>
                         <small>Финиш</small>
+                        @if (@ViewBag.CommentsOver21.Finish != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#finish" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsOver21.Finish
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsOver21.Results</small></span>
                         <small>Результаты</small>
+                        @if (@ViewBag.CommentsOver21.Results != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#results" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsOver21.Results
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsOver21.Center</small></span>
                         <small>Центр соревнований</small>
+                        @if (@ViewBag.CommentsOver21.Center != 0)
+                        {
+                            <br />
+                            <a href="/Comment/Show/@ViewBag.CompetitionId#center" class="comment">
+                                <span class="glyphicon glyphicon-comment"></span><small> Комментариев: </small>@ViewBag.CommentsOver21.Center
+                            </a>
+                        }
                     </li>
                     <li class="list-group-item">
                         <span class="badge"><small>@ViewBag.ResultsOver21.CountOfVoters</small></span>

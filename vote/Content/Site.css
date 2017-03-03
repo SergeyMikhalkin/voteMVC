@@ -184,6 +184,15 @@ textarea {
     resize: none;
 }
 
+.comment {
+	color: #39739d;
+	text-decoration:none;
+}
+.comment:hover {
+	color: #39739d;
+	text-decoration:none;
+}
+
 /*------------------------*/
 
 /*-------------*/

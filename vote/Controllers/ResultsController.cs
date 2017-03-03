@@ -15,6 +15,8 @@ namespace vote.Controllers
         // GET: Results by id
         public ActionResult Show(int id)
         {
+            ViewBag.CompetitionId = id;
+
             var results = from v in db.Votes
                           join g in db.Groups on v.GroupID equals g.Id
                           where v.CompetitionID == id
@@ -34,6 +36,14 @@ namespace vote.Controllers
                           };
 
             var groupType = db.Competitions.Where(x => x.Id == id).SelectMany(x => x.Groups);
+            var comments = db.Competitions.Where(x => x.Id == id).SelectMany(x => x.Comments);
+
+            var ListOfUsersGroups = db.Votes.Where(x => x.CompetitionID == id)
+                                      .Select(x => new UserGroup()
+            {
+                UserID = x.UserId,
+                GroupName = x.Group.Name
+            }).ToList();
 
             string groupExample = string.Empty;
             foreach (var group in groupType)
@@ -46,6 +56,8 @@ namespace vote.Controllers
             // Type: ME, MA, MB, WE, WA, WB
             if (groupExample.Length <= 2)
             {
+                
+
                 ResultTableModel men = new ResultTableModel();
                 ResultTableModel woman = new ResultTableModel();
                 if (SplitByAge(results, men, woman) == false)
@@ -59,8 +71,18 @@ namespace vote.Controllers
 
                 ViewBag.MenResults = men;
                 ViewBag.WomanResults = woman;
-                
+
                 ViewBag.TotalForCompetition = GetTotalForCompetition(men, woman);
+
+                ResultCommentModel menComments = new ResultCommentModel();
+                ResultCommentModel womanComments = new ResultCommentModel();
+                if (CommentsByAge(comments, ListOfUsersGroups, menComments, womanComments) == false)
+                {
+                    return View("Error");
+                }
+
+                ViewBag.MenComments = menComments;
+                ViewBag.WomanComments = womanComments;              
             }
 
             // Type: M10, W10, M21E, e.t.c.
@@ -82,6 +104,20 @@ namespace vote.Controllers
                 ViewBag.ResultsOver21 = resultOver21;
 
                 ViewBag.TotalForCompetition = GetTotalForCompetition(resultsUnder21, results21, resultOver21);
+
+
+                ResultCommentModel commentsUnder21 = new ResultCommentModel();
+                ResultCommentModel comments21 = new ResultCommentModel();
+                ResultCommentModel commentsOver21 = new ResultCommentModel();
+
+                if (CommentsByAge(comments, ListOfUsersGroups, commentsUnder21, comments21, commentsOver21) == false)
+                {
+                    return View("Error");
+                }
+
+                ViewBag.CommentsUnder21 = commentsUnder21;
+                ViewBag.Comments21 = comments21;
+                ViewBag.CommentsOver21 = commentsOver21;
             }
 
             return View();
@@ -151,7 +187,6 @@ namespace vote.Controllers
             result.CountOfVoters++;
         }
 
-
         private void getMiddle(ResultTableModel table)
         {
             if(table.CountOfVoters != 0)
@@ -166,6 +201,92 @@ namespace vote.Controllers
                                (table.Finish / table.CountOfVoters) +
                                (table.Results / table.CountOfVoters) +
                                (table.Center / table.CountOfVoters);
+            }
+        }
+
+
+
+        private bool CommentsByAge(IQueryable<Comment> comments, List<UserGroup> usersGroups, ResultCommentModel commentsUnder21, ResultCommentModel comments21, ResultCommentModel commentsOver21)
+        {
+            foreach (var comment in comments)
+            {
+                string group = usersGroups.First(x => x.UserID == comment.UserId).GroupName;
+
+                // get age. for example: W21E -> 21
+                int age = Convert.ToInt32(group.Substring(1, 2));
+
+                if (age < 21)
+                {
+                    IncrementCommentsTableField(comment, commentsUnder21);
+                }
+                if (age == 21)
+                {
+                    IncrementCommentsTableField(comment, comments21);
+                }
+                if (age > 21)
+                {
+                    IncrementCommentsTableField(comment, commentsOver21);
+                }
+            }
+
+            return true;
+        }
+        private bool CommentsByAge(IQueryable<Comment> comments, List<UserGroup> usersGroups, ResultCommentModel menComments, ResultCommentModel womanComments)
+        {
+            foreach (var comment in comments)
+            {
+                string group = usersGroups.First(x => x.UserID == comment.UserId).GroupName;
+
+                if (group[0] == 'М')
+                 {
+                    IncrementCommentsTableField(comment, menComments);
+                 }
+
+                 if (group[0] == 'Ж')
+                 {
+                    IncrementCommentsTableField(comment, womanComments);
+                 }
+            }
+
+            return true;
+        }
+
+        private void IncrementCommentsTableField(Comment comment, ResultCommentModel commentTable)
+        {
+            switch (comment.FieldName)
+            {
+                case "Info":
+                    commentTable.Info++;
+                    break;
+                case "Place":
+                    commentTable.Place++;
+                    break;
+                case "Map":
+                    commentTable.Map++;
+                    break;
+                case "Print":
+                    commentTable.Print++;
+                    break;
+                case "Distance":
+                    commentTable.Distance++;
+                    break;
+                case "Sealed":
+                    commentTable.Sealed++;
+                    break;
+                case "Start":
+                    commentTable.Start++;
+                    break;
+                case "Finish":
+                    commentTable.Finish++;
+                    break;
+                case "Center":
+                    commentTable.Center++;
+                    break;
+                case "Results":
+                    commentTable.Results++;
+                    break;
+                default:
+                    break;
             }
         }
 
