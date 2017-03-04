@@ -1,0 +1,70 @@
+﻿@using vote.Models
+@model IQueryable<IGrouping<string, Comment>>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+            <div class="alert alert-warning">
+                <strong>@ViewBag.Competition.Date</strong> @ViewBag.Competition.Name (@ViewBag.Competition.Kind). 
+                Дополнительные комментарии от пользователей по отдельным пунктам голосования:
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+            @foreach (var fieldName in Model)
+            {
+                if (fieldName.Key == "Info")
+                {
+                    <h4 id="@fieldName.Key"><span class="glyphicon glyphicon-pushpin"></span> Информация о соревнованиях</h4>
+                }
+                if (fieldName.Key == "Place")
+                {
+                    <h4 id="@fieldName.Key"><span class="glyphicon glyphicon-pushpin"></span> Местность</h4>
+                }
+                if (fieldName.Key == "Map")
+                {
+                    <h4 id="@fieldName.Key"><span class="glyphicon glyphicon-pushpin"></span> Карта</h4>
+                }
+                if (fieldName.Key == "Print")
+                {
+                    <h4 id="@fieldName.Key"><span class="glyphicon glyphicon-pushpin"></span> Печать карты</h4>
+                }
+                if (fieldName.Key == "Sealed")
+                {
+                    <h4 id="@fieldName.Key"><span class="glyphicon glyphicon-pushpin"></span> Герметизация карты</h4>
+                }
+                if (fieldName.Key == "Distance")
+                {
+                    <h4 id="@fieldName.Key"><span class="glyphicon glyphicon-pushpin"></span> Дистанция</h4>
+                }
+                if (fieldName.Key == "Start")
+                {
+                    <h4 id="@fieldName.Key"><span class="glyphicon glyphicon-pushpin"></span> Старт</h4>
+                }
+                if (fieldName.Key == "Finish")
+                {
+                    <h4 id="@fieldName.Key"><span class="glyphicon glyphicon-pushpin"></span> Финиш</h4>
+                }
+                if (fieldName.Key == "Results")
+                {
+                    <h4 id="@fieldName.Key"><span class="glyphicon glyphicon-pushpin"></span> Результаты</h4>
+                }
+                if (fieldName.Key == "Center")
+                {
+                    <h4 id="@fieldName.Key"><span class="glyphicon glyphicon-pushpin"></span> Центр соревнований, полевой лагерь, размещение</h4>
+                }
+                <div class="list-group">
+                    @foreach (var comment in fieldName)
+                    {
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading"><span class="glyphicon glyphicon-user"></span> <b>User Name</b></h5>
+                            <p class="list-group-item-text">@comment.Text</p>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
