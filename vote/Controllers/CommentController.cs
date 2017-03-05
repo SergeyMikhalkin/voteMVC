@@ -14,12 +14,29 @@ namespace vote.Controllers
         // GET: Comments for map
         public ActionResult Show(int id)
         {
-            // Info about competition
-            ViewBag.Competition = db.Competitions.Single(competition => competition.Id == id);
+            IQueryable<IGrouping<string, CommentViewModel>> comments;
 
-            // Get comments
-            var comments = db.Comments.Where(comment => comment.CompetitionId == id).GroupBy(field => field.FieldName);
+            try
+            {
+                // Info about competition
+                ViewBag.Competition = db.Competitions.Single(competition => competition.Id == id);
 
+                // Get comments
+                comments = db.Comments.Where(comment => comment.CompetitionId == id).Select(x => new CommentViewModel()
+                {
+                    FieldName = x.FieldName,
+                    Text = x.Text,
+                    FirstName = x.User.FirstName,
+                    LastName = x.User.LastName,
+                    UserId = x.User.Id
+                }).GroupBy(field => field.FieldName);
+
+            }
+            catch (Exception)
+            {
+                return View("Error");
+            }
+            
             return View(comments);
         }
     }

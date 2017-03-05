@@ -307,5 +307,19 @@ textarea {
   color: #e2bbac;
 }
 
+.comment-header {
+    color:  #e29277;
+}
 
+.custom-list-group-item {
+  border: 1px solid #fbeed5;
+}
 
+.custom-alert {
+    color: #e29277;
+    border-color: #fbeed5;
+}
+
+.field-text {
+    font-size:large;
+}
