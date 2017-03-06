@@ -92,7 +92,7 @@
                                     <div class="competition-voters">
                                         @if (ViewBag.countOfVoters[ViewBag.Competition[i * 3 + j].Id] != null)
                                         {
-                                            <small>Проголосовало людей: <b>ViewBag.countOfVoters[ViewBag.Competition[i * 3 + j].Id]</b></small>
+                                            <small>Проголосовало людей: <b>@ViewBag.countOfVoters[ViewBag.Competition[i * 3 + j].Id]</b></small>
                                         }
                                         else
                                         {
