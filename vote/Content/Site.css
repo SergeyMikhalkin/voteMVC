@@ -323,3 +323,7 @@ textarea {
 .field-text {
     font-size:large;
 }
+
+.table th, td {
+   text-align: center;
+}
