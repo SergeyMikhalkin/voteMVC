@@ -319,7 +319,11 @@ textarea {
         max-width: 100%;
         white-space: nowrap;
     }
+   .footer {
+       font-size: smaller;
+       line-height: 27px;
 
+   }
 }
 
 .navbar-custom .navbar-link {
