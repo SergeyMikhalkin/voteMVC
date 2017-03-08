@@ -293,9 +293,32 @@ textarea {
       margin-top: 10px;
   }
 
-  h2{
+  h2 {
        font-size: 15px;
    }
+
+  .table th, td {
+       font-size:small;
+   }
+
+  .table thead > tr > th,
+  .table tbody > tr > th,
+  .table tfoot > tr > th,
+  .table thead > tr > td,
+  .table tbody > tr > td,
+  .table tfoot > tr > td {
+        padding: 4px;
+   }
+   .table td {
+        max-width: 50px;
+   }
+   .table  td  span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        max-width: 100%;
+        white-space: nowrap;
+    }
 
 }
 

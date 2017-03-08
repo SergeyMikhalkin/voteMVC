@@ -61,7 +61,7 @@ namespace vote.Controllers
 
         private List<RatingViewModels> GetRating(int year, int ratingId)
         {
-            List<RatingViewModels> eliteCompetitions = db.Competitions.Where(c => c.Ratings.Any(r => r.Id == ratingId)).Select(c => new RatingViewModels()
+            List<RatingViewModels> eliteCompetitions = db.Competitions.Where(c => c.Ratings.Any(r => r.Id == ratingId) && c.Date.Contains(year.ToString())).Select(c => new RatingViewModels()
             {
                 CompetitionId = c.Id,
                 Name = c.Name,
