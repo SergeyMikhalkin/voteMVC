@@ -112,7 +112,7 @@
                                 {
                                     <div class="col-md-5">
                                         <div class="competition-btn"> 
-                                            @Html.RouteLink("Проголосовать", new { controller = "Competitions", action = "Vote", id = ViewBag.Competition[i * 3 + j].Id }, new { @class = "btn btn-sm btn-danger btn-block" })
+                                            @Html.RouteLink("Проголосовать", new { controller = "Competitions", action = "Vote", id = ViewBag.Competition[i * 3 + j].Id }, new { @class = "btn btn-sm btn-primary btn-block" })
                                       </div>
                                     </div>
                                 }
@@ -120,7 +120,7 @@
                                 {
                                     <div class="col-md-5">
                                         <div class="competition-btn">
-                                            @Html.RouteLink("Проголосовать", new { controller = "Competitions", action = "Vote", id = ViewBag.Competition[i * 3 + j].Id }, new { @class = "btn btn-sm btn-danger btn-block disabled" })
+                                            @Html.RouteLink("Проголосовать", new { controller = "Competitions", action = "Vote", id = ViewBag.Competition[i * 3 + j].Id }, new { @class = "btn btn-sm btn-primary btn-block disabled" })
                                         </div>
                                     </div>
                                 }
@@ -220,7 +220,7 @@
                         {
                             <div class="col-md-5">
                                 <div class="competition-btn">                            
-                                    @Html.RouteLink("Проголосовать", new { controller = "Competitions", action = "Vote", id = ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id }, new { @class = "btn btn-sm btn-danger btn-block" })
+                                    @Html.RouteLink("Проголосовать", new { controller = "Competitions", action = "Vote", id = ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id }, new { @class = "btn btn-sm btn-primary btn-block" })
                                 </div>
                             </div>
                         }
@@ -228,7 +228,7 @@
                         {
                             <div class="col-md-5">
                                 <div class="competition-btn">                 
-                                    @Html.RouteLink("Проголосовать", new { controller = "Competitions", action = "Vote", id = ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id }, new { @class = "btn btn-sm btn-danger btn-block disabled" })
+                                    @Html.RouteLink("Проголосовать", new { controller = "Competitions", action = "Vote", id = ViewBag.Competition[ViewBag.CompetitionCount - (ViewBag.CompetitionCount % 3) + i].Id }, new { @class = "btn btn-sm btn-primary btn-block disabled" })
                                 </div>
                             </div>
                         }
