@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-offset-10 col-md-2 col-lg-offset-10 col-lg-2">
-            @Html.ActionLink("Добавить", "Add", "Admin", null, new { @class= "btn btn-lg btn-default btn-block" })
+            @Html.ActionLink("Добавить", "Add", "Admin", null, new { @class = "btn btn-lg btn-default btn-block" })
         </div>
     </div>
     <div class="row top-margin-10">
@@ -31,8 +31,8 @@
                             </td>
                             <td><span>@competition.Name</span></td>
                             <td><span>@competition.Date</span></td>
-                            <td><a href="Admin/Edit/@competition.Id"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                            <td><a href="Admin/Delete/@competition.Id"><span class="glyphicon glyphicon-remove"></span></a></td>
+                            <td><a href="Edit/@competition.Id"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                            <td><a href="Delete/@competition.Id"><span class="glyphicon glyphicon-remove"></span></a></td>
                         </tr>
                     }
                 </tbody>

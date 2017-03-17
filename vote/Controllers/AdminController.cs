@@ -18,5 +18,22 @@ namespace vote.Controllers
             var competitions = db.Competitions;
             return View(competitions);
         }
+
+        // Delete competition
+        [Authorize(Roles = "Admin")]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                Competition competition = db.Competitions.Single(c => c.Id == id);
+                db.Competitions.Remove(competition);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return View("Error");
+            }
+            return RedirectToAction("Competitions");
+        }
     }
 }
