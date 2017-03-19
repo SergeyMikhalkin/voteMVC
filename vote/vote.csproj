@@ -195,6 +195,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="Custom\Attributes.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CompetitionsController.cs" />
@@ -205,19 +208,45 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\CommentViewModels.cs" />
     <Compile Include="Models\CompetitionViewModels.cs" />
     <Compile Include="Models\Competition.cs" />
+    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\RatingViewModels.cs" />
+    <Compile Include="Models\ResultsViewModels.cs" />
+    <Compile Include="Models\Vote.cs" />
+    <Compile Include="Models\VoteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\brestLogo.PNG" />
     <Content Include="Content\img\error.png" />
+    <Content Include="Content\img\gomelLogo.png" />
+    <Content Include="Content\img\grodnoLogo.png" />
     <Content Include="Content\img\lockout.png" />
     <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\LogosForVoting\center.png" />
+    <Content Include="Content\img\LogosForVoting\distance.png" />
+    <Content Include="Content\img\LogosForVoting\finish.png" />
+    <Content Include="Content\img\LogosForVoting\info.png" />
+    <Content Include="Content\img\LogosForVoting\map.png" />
+    <Content Include="Content\img\LogosForVoting\place.png" />
+    <Content Include="Content\img\LogosForVoting\print.png" />
+    <Content Include="Content\img\LogosForVoting\results.png" />
+    <Content Include="Content\img\LogosForVoting\sealed.png" />
+    <Content Include="Content\img\LogosForVoting\start.png" />
+    <Content Include="Content\img\minskLogo.png" />
+    <Content Include="Content\img\mogilevLogo.png" />
+    <Content Include="Content\img\polotskLogo.png" />
+    <Content Include="Content\img\shklovLogo.png" />
+    <Content Include="Content\img\vitebskLogo.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -274,8 +303,22 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Rating\FullRating.cshtml" />
+    <Content Include="Views\Rating\Full.cshtml" />
     <Content Include="Views\Competitions\All.cshtml" />
+    <Content Include="Views\Competitions\Info.cshtml" />
+    <Content Include="Views\Competitions\Place.cshtml" />
+    <Content Include="Views\Competitions\Map.cshtml" />
+    <Content Include="Views\Competitions\Print.cshtml" />
+    <Content Include="Views\Competitions\Sealed.cshtml" />
+    <Content Include="Views\Competitions\Distance.cshtml" />
+    <Content Include="Views\Competitions\Start.cshtml" />
+    <Content Include="Views\Competitions\Finish.cshtml" />
+    <Content Include="Views\Competitions\Results.cshtml" />
+    <Content Include="Views\Competitions\Center.cshtml" />
+    <Content Include="Views\Competitions\Group.cshtml" />
+    <Content Include="Views\Results\Show.cshtml" />
+    <Content Include="Views\Comment\Show.cshtml" />
+    <Content Include="Views\Admin\Competitions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
