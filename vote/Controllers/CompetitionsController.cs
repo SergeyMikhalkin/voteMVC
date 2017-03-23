@@ -39,7 +39,7 @@ namespace vote.Controllers
             ViewBag.CountOfVoters = CountOfVoters;
 
             ViewBag.CompetitionCount = db.Competitions.Count();
-            ViewBag.Competition = db.Competitions.ToArray();
+            ViewBag.Competition = db.Competitions.OrderByDescending(x => x.Date.Substring(3, 2)).ThenByDescending(x => x.Date.Substring(0, 2)).ToList();
 
             return View();
         }
