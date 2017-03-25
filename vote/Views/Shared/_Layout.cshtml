@@ -44,5 +44,20 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            SomeeAdsRemover();
+        });
+
+        function SomeeAdsRemover() {
+            $("center").each(function () {
+                if ($(this).html() == '<a href="http://somee.com">Web hosting by Somee.com</a>') {
+                    $(this).remove();
+                    
+                    return false;
+                }
+            });
+        }
+    </script>
 </body>
 </html>
