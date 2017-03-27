@@ -76,7 +76,10 @@ namespace vote.Controllers
                 GetScore(competition);
             }
 
-            return eliteCompetitions;
+            // sort table by total rating
+            List<RatingViewModels> sortedEliteCompetitions = eliteCompetitions.OrderByDescending(x => x.Score).ToList();
+                
+            return sortedEliteCompetitions;
         }
 
         private bool GetScore(RatingViewModels competition)

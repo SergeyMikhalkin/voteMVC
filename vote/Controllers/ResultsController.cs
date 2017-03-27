@@ -17,6 +17,15 @@ namespace vote.Controllers
         {
             ViewBag.CompetitionId = id;
 
+            try
+            {
+                ViewBag.CompetitionInfo = db.Competitions.Single(x => x.Id == id);
+            }
+            catch (Exception)
+            {
+                return View("Error");
+            }
+
             var results = from v in db.Votes
                           join g in db.Groups on v.GroupID equals g.Id
                           where v.CompetitionID == id

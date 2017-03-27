@@ -306,20 +306,20 @@ namespace vote.Controllers
 
             voteViewModel.Center = centerGrade;
 
-            int voteId;
+            int competitionId;
 
-            if(SaveVote(voteViewModel, out voteId) == false) return View("Error");
+            if(SaveVote(voteViewModel, out competitionId) == false) return View("Error");
             
             // go to results
             return RedirectToRoute(new
             {
                 controller = "Results",
                 action = "Show",
-                id = voteId 
+                id = competitionId
             });
         }
 
-        private bool SaveVote(VoteViewModel voteViewModel, out int voteId)
+        private bool SaveVote(VoteViewModel voteViewModel, out int competitionId)
         {
             // copy results for save
             Vote voteForSave = new Vote();
@@ -354,11 +354,11 @@ namespace vote.Controllers
             }
             catch (Exception)
             {
-                voteId = -1;
+                competitionId = -1;
                 return false;
             }
 
-            voteId = voteForSave.Id;
+            competitionId = voteForSave.CompetitionID;
             return true;
         }
 

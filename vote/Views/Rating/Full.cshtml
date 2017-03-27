@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Rating";
+    ViewBag.Title = "Рейтинг";
     int index = 0;
 }
 
@@ -42,7 +42,7 @@
                             <td>
                                 @(++index)
                             </td>
-                            <td><span>@competition.Name</span></td>
+                            <td><span><a href="@Url.Action("Show", "Results", new { id = @competition.CompetitionId })">@competition.Name</a></span></td>
                             <td><span>@competition.Date</span></td>
                             <td><span>@competition.Kind</span></td>
                             <td><span>@competition.Score.ToString("F2")</span></td>

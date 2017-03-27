@@ -57,7 +57,7 @@
                     </div>
                     <div class="row top-margin-10">
                         <div class="col-md-12">
-                            <small>Комментарий(необязательно!):</small>
+                            <small>Комментарий (необязательно!):</small>
                         </div>
                     </div>
                     <div class="row">
@@ -70,7 +70,7 @@
                             <h5>Оценка</h5>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="rowGrade">
                         <div class="col-xs-3 col-md-3 col-lg-3 text-right grade-border-right grade-padding-3">
                             <small>Плохо</small>
                         </div>
@@ -84,6 +84,11 @@
                         </div>
                         <div class="col-xs-3 col-md-3 col-lg-3 text-left grade-border-left grade-padding-3">
                             <small>Хорошо</small>
+                        </div>
+                    </div>
+                    <div class="row" id="waitText" style="visibility: hidden;">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                            <center><small>Пожалуйста подождите...</small></center>
                         </div>
                     </div>
                     <div class="row top-margin-20">
@@ -110,5 +115,7 @@
     function onClick(value) {
         $("#centerGrade").attr("value", value);
         $("#form").submit();
+        $('#rowGrade').hide();
+        $('#waitText').css("visibility", "visible");
     }
 </script>
